@@ -1,0 +1,33 @@
+.search-form>form {
+    position: relative;
+    overflow: hidden;
+}
+
+.search-form input {
+    border: 1px solid #d2d2d2;
+    font-size: 12px;
+    height: 33px;
+    padding-left: 10px;
+    width: 86%;
+}
+
+.search-form button {
+    background-color: #ef5656;
+    border: medium none;
+    color: #fffdfd;
+    font-size: 17px;
+    height: 37px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 49px;
+}
+
+#search-form>button:hover {
+    background: #303030;
+}
+
+.nav-item {
+    margin-right: 5px;
+    color: red;
+}
