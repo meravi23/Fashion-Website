@@ -31,3 +31,95 @@
     margin-right: 5px;
     color: red;
 }
+
+.register-left {
+    color: red;
+}
+
+.register-right {
+    padding-left: 0;
+}
+
+.login-register-form>h2 {
+    color: red;
+}
+
+.lostPasswordPage {
+    width: 500px;
+    margin: auto;
+}
+
+
+/* Footer*/
+
+.single-footer>h4 {
+    color: white;
+    font-family: "montserratregular";
+    font-size: 13px;
+    margin-bottom: 19px 0 0 28px;
+    text-transform: uppercase;
+}
+
+ul.s-f-widget {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: #aaa;
+}
+
+.footer-widget-area {
+    background-color: #ca1334;
+    padding: 38px 0 0 38px;
+}
+
+.s-f-widget li a,
+.single-footer.right .s-f-widget li {
+    display: block;
+    padding: 3px 0;
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+}
+
+.s-f-widget li:first-child a,
+.single-footer.right .s-f-widget li:first-child {
+    padding-top: 10px;
+}
+
+.s-f-widget li:last-child a {
+    padding-bottom: 0;
+}
+
+.s-f-widget>li span {
+    float: right;
+}
+
+.single-footer.right ul.s-f-widget li:last-child {
+    border: 0 none;
+}
+
+.payment-image {
+    float: right;
+    padding-top: 53px;
+}
+
+.payment-image img {
+    width: 100%;
+}
+
+
+/* ul.s-f-widget li a:hover {
+    color: #ef5656;
+} */
+
+.footer-left {
+    text-align: center;
+}
+
+.service-area {
+    margin-top: 30px;
+}
+
+.social-area {
+    border-bottom: 1px solid #cccccc;
+}
