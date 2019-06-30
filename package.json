@@ -1,0 +1,22 @@
+{
+  "name": "fashion-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/annabelo2606/Fashion-Website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/annabelo2606/Fashion-Website/issues"
+  },
+  "homepage": "https://github.com/annabelo2606/Fashion-Website#readme",
+  "dependencies": {
+    "parse": "^2.4.0"
+  }
+}

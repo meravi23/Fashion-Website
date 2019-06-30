@@ -1,0 +1,31 @@
+<div>
+    <app-navbar></app-navbar>
+    <div class="products-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="products-gallery-title">
+                    <h2>Women's Jeans</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12" ng-repeat="product in products">
+                    <div class="card product-gallery-card h-100">
+                        <div class="product-gallery-detail card-img-top" ng-click="openProductDetails(product.id)">
+                            <img ng-src={{product.image}} alt="">
+                        </div>
+                        <div class="card-body">
+                            <div class="product-gallery-colors d-flex align-items-center justify-content-between">
+                                <ul class="colors" ng-repeat="color in product.colors">
+                                    <li ng-style="{'background-color': '{{color}}'}"> </li>
+                                </ul>
+                            </div>
+                            <p class="product-gallery-name">{{product.name}}</p>
+                            <p class="product-gallery-price"> ${{product.price}} </p>
+                            <button class="buy-btn"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-footer></app-footer>
+    </div>

@@ -1,56 +1,119 @@
 <div>
     <app-navbar></app-navbar>
+    <div class="mainmenu ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+                <ul class="navbar-nav mr-auto ml-auto ">
+                    <li class="nav-item ">
+                        <a class="nav-link " href="# ">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle " href="# " id="navbarDropdownMen " data-toggle="dropdown ">
+                                MENS
+                            </a>
+                        <div class="dropdown-menu ">
+                            <span>
+                                    <a href="# " class="dropdown-header ">Outfits</a>
+                                    <a href="# " class="dropdown-item ">T-Shirts</a>
+                                    <a href="# " class="dropdown-item ">Jackets</a>
+                                    <a href="# " class="dropdown-item ">Jeans</a>
+                                    <a href="# " class="dropdown-item ">Shirts</a>
+                                </span>
+                            <span>
+                                    <a href="# " class="dropdown-header ">Accssesories</a>
+                                    <a href="# " class="dropdown-item ">Watch</a>
+                                    <a href="# " class="dropdown-item ">Sunglass</a>
+                                    <a href="# " class="dropdown-item ">Cap</a>
+                                    <a href="# " class="dropdown-item ">Perfumes</a>
+                                </span>
+                            <!-- <div class="dropdown-divider "></div>
+                                <a class="dropdown-item " href="# ">Something else here</a> -->
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle " href="# " id="navbarDropdownWomen " role="button " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false ">
+                                WOMENS
+                            </a>
+                        <div class="dropdown-menu " aria-labelledby="navbarDropdownWomen ">
+                            <span>
+                                    <a href="# " class="dropdown-header ">Outfits</a>
+                                    <a href="# " class="dropdown-item ">T-Shirts</a>
+                                    <a href="# " class="dropdown-item ">Jackets</a>
+                                    <a href="# " class="dropdown-item ">Jeans</a>
+                                    <a href="# " class="dropdown-item ">Shirts</a>
+                                </span>
+                            <span>
+                                    <a href="# " class="dropdown-header ">Accssesories</a>
+                                    <a href="# " class="dropdown-item ">Watch</a>
+                                    <a href="# " class="dropdown-item ">Sunglass</a>
+                                    <a href="# " class="dropdown-item ">Cap</a>
+                                    <a href="# " class="dropdown-item ">Perfumes</a>
+                                </span>
+                            <div class="dropdown-divider "></div>
+                            <a class="dropdown-item " href="# ">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " href="# ">ABOUT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     <section class="login-reister-area">
         <div class="container">
             <div class="row">
-                <form action="#">
-                    <div class="col-lg-6 col-md-6 col-sm-12 register-left">
-                        <div class="login-register-form">
-                            <h2>RETURNING CUSTOMER</h2>
-                            <div class="login-register">
-                                <label for="loginemail">ENTER EMAIL</label>
-                                <input type="text" placeholder="" id="loginemail">
-                                <label for="loginpsw">ENTER PASSWORD</label>
-                                <input type="password" placeholder="" id="loginpsw">
-                                <div class="pass-link">
-                                    <label>
-                                    <input type="radio" value="guest" name="check">
-                                    <span>REMEMBER ME</span>
-                                </label>
-                                    <a class="forgot-pass" href="forgotpsw.html">FORGOT PASSWORD</a>
-                                </div>
-                                <a class="c-btn" href="#">Login</a>
-                            </div>
-                        </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 register-left">
+                    <h2>RETURNING CUSTOMER</h2>
+                    <div class="alert alert-danger" role="alert" ng-show="invalidLogin">
+                        <strong>Invalid Login!</strong> incorrect email or password
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 register-right">
-                        <div class="login-register-form">
-                            <h2>DON’T HAVE AN ACCOUNT ? REGISTER NOW</h2>
-                            <div class="login-register">
-                                <div class="l-r-p">
-                                    <p>By creating an account with our store, you will able to move through the checkout</p>
-                                    <p>process faster. Store multipule shipping addresses, view and track your orders </p>
-                                    <p>in your account and more</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="email">ENTER EMAIL</label>
+                            <input type="email" class="form-control" id="email" ng-model="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">ENTER PASSWORD</label>
+                            <input type="password" class="form-control" id="pwd" ng-model="pwd">
+                        </div>
+                        <div class="pass-link">
+                            <p> <a class="forgot-pass" href="#!/login/forgotPassword.html">FORGOT PASSWORD</a></p>
+                            <label class="login-note">
+                            <input type="radio" value="guest" name="check">
+                            <span>REMEMBER ME</span>
+                            </label>
+
+                            <button type="button" class="btn btn-success btn-block" ng-click="login()">LOGIN </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 register-right">
+                    <h2>ENROLL NOW AND ENJOY THE BENEFITS</h2>
+                    <div class="row">
+                        <form>
+                            <div class="form-group">
+                                <label for="regEmail">ENTER EMAIL</label>
+                                <input type="email" class="form-control" id="regEmail" ng-model="email">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="regPwd">CREATE PASSWORD</label>
+                                    <input type="password" class="form-control" id="regPwd" ng-model="pwd">
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="text" placeholder="admin |">
-                                        <input type="text" placeholder="Username">
-                                        <input type="password" placeholder="">
-                                        <a class="reg-c-btn" href="#">Register Now</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="email" placeholder="Email">
-                                        <input type="text" placeholder="Phone">
-                                        <input type="password" placeholder="Re-password">
-                                    </div>
+                                <div class="form-group col-md-6">
+                                    <label for="regPwd2">CONFIRM</label>
+                                    <input type="password" class="form-control" id="regPwd2" ng-model="pwd2">
                                 </div>
                             </div>
-                        </div>
+                            <label class="login-note">
+                            <input type="radio" value="guest" name="check">
+                            <span>I AGREE TO THE TERMS & CONDITIONS & PRIVACY POLICY</span>
+                            </label>
+                            <button type="button" class="btn btn-success btn-block" ng-click="register()">REGISTER</button>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </div>
+                </div>
     </section>
     <app-footer></app-footer>
-</div>
+    </div>

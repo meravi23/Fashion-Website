@@ -25,12 +25,40 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Font awsome CSS-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Parse (Back4App) -->
+    <script src="node_modules/parse/dist/parse.min.js"></script>
+    <script>
+        Parse.serverURL = 'https://parseapi.back4app.com'; // This is your Server URL
+        Parse.initialize(
+            'pGTFI0mAxOyYwkxG6DvX80isen1F3SVnN0628od2', // This is your Application ID
+            '3IxagXCa0f8bgoXXck9nX8b5qhoWggAf8x4c6WFl' // This is your Javascript key
+        );
+    </script>
+
+    <!-- These are needed for UI Bootstrap (Bootstrap directives for AngularJS) -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-touch.js"></script>
+    <script src="js/ui-bootstrap-tpls.js"></script> -->
+
+
+    <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+    <script src='//raw.githubusercontent.com/greenwoodents/quickbeam.js/master/dist/quickbeam.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js'></script>
 
     <link rel="stylesheet" href="style.css">
 
     <script src="app/app.js"></script>
     <script src="app/nav/navDir.js"></script>
+    <script src="app/nav/navCtrl.js"></script>
     <script src="app/footer/footerDir.js"></script>
+    <script src="app/login/loginCtrl.js"></script>
+    <script src="app/model/userSrv.js"></script>
+    <script src="app/login/registrationCtrl.js"></script>
+    <script src="app/shoppingCart/shoppingCartCtrl.js"></script>
+    <script src="app/model/shoppingCartSrv.js"></script>
+    <script src="app/model/productSrv.js"></script>
+    <script src="app/products/productsCtrl.js"></script>
+    <script src="app/products/productDetailCtrl.js"></script>
 
 </head>
 

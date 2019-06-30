@@ -1,4 +1,4 @@
-<div class="top-menu">
+<div class="top-menu" ng-controller="navCtrl">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Anna Sofair</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,90 +6,65 @@
         </button>
         <form class="form-inline my-2 my-lg-0 ">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+            <button class="btn btn-default nav-search-btn" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-user"></i>My Account</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-heart"></i>Wish List <span>(0)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-shopping-cart"></i>Shopping Cart</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#"><i class="fa fa-sign-in-alt" aria-hidden="true"></i>Checkout</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="app/login/login-register.html"><i class="fa fa-sign-in-alt" aria-hidden="true"></i>Login</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="app/login/login-register.html"><i class="fa fa-lock"></i>Register</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<div class="mainmenu">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">HOME</a>
+                    <a class="nav-link" href="#"><i class="fa fa-user"></i>
+                    <span ng-hide="isLoggedIn()">My Acount</span>
+                    <span ng-show="isLoggedIn()">{{"Hello," + " " + user.fname + " " + user.lname}}</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT</a>
+                    <a class="nav-link" href="#" ng-show="isLoggedIn()"><i class="fa fa-heart"></i>Wish List <span>(0)</span></a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMen" data-toggle="dropdown">
-                        MENS
-                    </a>
-                    <div class="dropdown-menu">
-                        <span>
-                            <a href="#" class="dropdown-header">Outfits</a>
-                            <a href="#" class="dropdown-item">T-Shirts</a>
-                            <a href="#" class="dropdown-item">Jackets</a>
-                            <a href="#" class="dropdown-item">Jeans</a>
-                            <a href="#" class="dropdown-item">Shirts</a>
-                        </span>
-                        <span>
-                            <a href="#" class="dropdown-header">Accssesories</a>
-                            <a href="#" class="dropdown-item">Watch</a>
-                            <a href="#" class="dropdown-item">Sunglass</a>
-                            <a href="#" class="dropdown-item">Cap</a>
-                            <a href="#" class="dropdown-item">Perfumes</a>
-                        </span>
-                        <!-- <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a> -->
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownWomen" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        WOMENS
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownWomen">
-                        <span>
-                            <a href="#" class="dropdown-header">Outfits</a>
-                            <a href="#" class="dropdown-item">T-Shirts</a>
-                            <a href="#" class="dropdown-item">Jackets</a>
-                            <a href="#" class="dropdown-item">Jeans</a>
-                            <a href="#" class="dropdown-item">Shirts</a>
-                        </span>
-                        <span>
-                            <a href="#" class="dropdown-header">Accssesories</a>
-                            <a href="#" class="dropdown-item">Watch</a>
-                            <a href="#" class="dropdown-item">Sunglass</a>
-                            <a href="#" class="dropdown-item">Cap</a>
-                            <a href="#" class="dropdown-item">Perfumes</a>
-                        </span>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                <li class="nav-item">
+                    <div class="header-main-right">
+                        <a href="#!/shoppingCart" class="cart"><i class="fa fa-shopping-cart"></i><span>2</span></a>
+                        <div class="mini-cart-content">
+                            <div class="mini-top-sec">
+                                <div class="cart-image">
+                                    <a href="#"><img src="" alt=""></a>
+                                    <span class="quantity">1</span>
+                                </div>
+                                <div class="cart-info">
+                                    <a href="#">
+                                        <p>Etiam Eu Neque</p>
+                                    </a>
+                                    <p class="cart-price">£300.00</p>
+                                </div>
+                                <div class="product-cancel"><a href="#"><i class="fa fa-times-circle"></i></a>
+                                </div>
+                            </div>
+                            <div class="mini-top-sec">
+                                <div class="cart-image">
+                                    <a href="#"><i class="far fa-shopping-cart"></i><</a>
+                                    <span class="quantity">2</span>
+                                </div>
+                                <div class="cart-info">
+                                    <a href="#">
+                                        <p>Etiam Eu Neque</p>
+                                    </a>
+                                    <p class="cart-price">£500.00</p>
+                                </div>
+                                <div class="product-cancel"><a href="#"><i class="fa fa-times-circle"></i></a>
+                                </div>
+                            </div>
+                            <div class="mini-bottom-sec">
+                                <p class="total-amount">AMOUNT <span>£800.00</span></p>
+                                <div class="button"><a href="checkout.html">CHECKOUT</a></div>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT</a>
+                    <a class="nav-link" href="#!/login" ng-hide="isLoggedIn()"><i class="fa fa-sign-in-alt" aria-hidden="true"></i>Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" ng-show="isLoggedIn()" ng-click="logout()">
+                        <i class="fa fa-sign-in-alt" aria-hidden="true "></i>Logout
+                    </a>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,59 @@
+<div>
+    <app-navbar></app-navbar>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <h6 ng-show="shoppingCartIsEmpty">YOUR SHOPPING CART IS EMPTY.</h6>
+        <div ng-hide="shoppingCartIsEmpty" class="shopping-cart">
+
+            <div class="column-labels">
+                <label class="product-image">Image</label>
+                <label class="product-details">Product</label>
+                <label class="product-price">Price</label>
+                <label class="product-quantity">Quantity</label>
+                <label class="product-removal">Remove</label>
+                <label class="product-line-price">Total</label>
+            </div>
+
+            <div class="product" ng-repeat="shoppingCart in shoppingCarts">
+                <div class="product-image">
+                    <img src="{{shoppingCart.productImage}}">
+                </div>
+                <div class="product-details">
+                    <div class="product-title">{{shoppingCart.productName}}</div>
+                    <p class="product-description"> {{shoppingCart.productDesc}}</p>
+                    <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                </div>
+                <div class="product-price">{{shoppingCart.productPrice}}</div>
+                <div class="product-quantity">
+                    <input type="number" value="{{shoppingCart.productQuantity}}" min="1" ng-change="updateProductQuantityInCart(shoppingCart.productQuantity)">
+                </div>
+                <div class="product-removal">
+                    <button class="remove-product" ng-click="removeItemFromCart(shoppingCart)">Remove</button>
+                </div>
+                <div class="product-line-price">{{shoppingCart.productPrice * shoppingCart.productQuantity}}</div>
+            </div>
+
+            <div class="totals">
+                <div class="totals-item">
+                    <label>Subtotal</label>
+                    <div class="totals-value" id="cart-subtotal">{{$scope.subtotal}}</div>
+                </div>
+                <div class="totals-item">
+                    <label>Tax (5%)</label>
+                    <div class="totals-value" id="cart-tax">{{$scope.subtotal* 0.05}}</div>
+                </div>
+                <div class="totals-item">
+                    <label>Shipping</label>
+                    <div class="totals-value" id="cart-shipping">$15.00</div>
+                </div>
+                <div class="totals-item totals-item-total">
+                    <label>Grand Total</label>
+                    <div class="totals-value" id="cart-total">{{ $scope.subtotal + ( $scope.subtotal * 0.05) + 15}}</div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" href="#!/products"><i class="fa fa-shopping-cart"></i> Continue Shopping</button>
+        <button ng-hide="shoppingCartIsEmpty" class="checkout btn btn-success" type="button">Checkout</button>
+    </div>
+    <app-footer></app-footer>
+</div>
