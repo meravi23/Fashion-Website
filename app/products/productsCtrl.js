@@ -1,12 +1,43 @@
-app.controller("productsCtrl", function($scope, $location, productSrv, $log) {
+app.controller("productsCtrl", function($scope, $location, productSrv, $log, $routeParams) {
 
     $scope.products = [];
-    $scope.categoryId = "13";
+
+    $scope.categoryGender = {
+        "1": "men",
+        "2": "women"
+    };
+
+    $scope.categoryType = {
+        "1": "outfits",
+        "2": "t-shirts",
+        "3": "jackets",
+        "4": "jeans",
+        "5": "shirts",
+        "6": "accessories",
+        "7": "watch",
+        "8": "sunglass",
+        "9": "cap",
+        "10": "perfumes"
+    }
+
+    Object.prototype.getKey = function(value) {
+        for (var key in this) {
+            if (this[key] == value) {
+                return key;
+            }
+        }
+        return null;
+    };
+
+    $scope.categoryName = $routeParams.category1.toUpperCase() + "'S " + $routeParams.category2.toUpperCase();
+
+    $scope.categoryId = $scope.categoryGender.getKey($routeParams.category1) +
+        $scope.categoryType.getKey($routeParams.category2);
 
     productSrv.getProductbyCategoryID($scope.categoryId).then(function(products) {
         $scope.products = products;
     }, function(err) {
-
+        console.error(err);
     });
 
     $scope.openProductDetails = function(productID) {

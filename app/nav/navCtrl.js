@@ -6,4 +6,8 @@ app.controller("navCtrl", function($scope, userSrv, $log) {
         return userSrv.isLoggedIn();
     }
 
+    $scope.logout = function() {
+        userSrv.logout();
+        $location.path("/");
+    }
 })

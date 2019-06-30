@@ -30,7 +30,7 @@
                     <div class="header-size col-md-6 clearfix">
                         <h6>SIZE</h6>
                         <div class="sizes" ng-repeat="size in product.sizes">
-                            <input id="productSize" type="radio" />
+                            <input id="productSize" type="radio" ng-model="product.size" />
                             <label for="productSize"> {{size}}</label>
 
                         </div>
@@ -38,7 +38,7 @@
                     <div class="header-color col-md-6 clearfix">
                         <h6>COLOR</h6>
                         <div class="colors" ng-repeat="color in product.colors">
-                            <input quickbeam="color " id="productColor" type="radio " />
+                            <input quickbeam="color " id="productColor" type="radio" ng-model="product.color" />
                             <label for="productColor">
                           <span ng-style="{ 'background-color': '{{color}}'}"></span>
                         </label>
@@ -53,7 +53,7 @@
                 <form id="addToCartForm ">
                     <div class="btn-and-quantity ">
                         <input type="number" class="product-detail-quantity" placeholder="Qty." min="1" max="999" maxlength="3">
-                        <button class="addToCartText btn btn-success"><i class="fa fa-shopping-cart "></i>
+                        <button class="addToCartText btn btn-success" ng-click="addProducToShoppingCart(product)"><i class="fa fa-shopping-cart "></i>
                                 Add to Cart</button>
                     </div>
                 </form>

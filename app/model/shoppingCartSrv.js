@@ -4,13 +4,14 @@ app.factory("shoppingCartSrv", function($q, productSrv) {
         this.id = parseShoppingCart.id;
         this.userID = parseShoppingCart.get("userID");
         this.productID = parseShoppingCart.get("productID");
-        this.productQuantity = parseShoppingCart.get("productQuantity");
+        this.productQuantity = parseInt(parseShoppingCart.get("productQuantity"));
         this.productColor = parseShoppingCart.get("productColor");
         this.productSize = parseShoppingCart.get("productSize");
         this.productPrice = parseShoppingCart.get("productPrice");
         this.productImage = " ";
         this.productName = " ";
         this.productDesc = " ";
+        this.linePrice = this.productPrice * this.productQuantity;
     }
 
     function getShoppingCartPerUserID() {
@@ -47,8 +48,40 @@ app.factory("shoppingCartSrv", function($q, productSrv) {
         return async.promise;
     }
 
+
+    function updateShoppingCartQuantity(shoppingCart, quantity) {
+
+        var async = $q.defer();
+        var promises = [];
+        var shoppingCarts = [];
+
+        // Building a query
+        const ShoppingCartParse = Parse.Object.extend('ShoppingCart');
+        const query = new Parse.Query(ShoppingCartParse);
+
+        query.get('shoppingCart.id').then((object) => {
+            object.set('productQuantity', quantity);
+            object.save().then((response) => {
+                console.log('ShoppingCart found', results);
+                for (let i = 0; i < shoppingCart.length; i++) {
+                    if (shoppingCart[i].id === results.id) {
+                        shoppingCarts[i].quantity = results[i].quantity;
+                        shoppingCart[i].linePrice = shoppingCarts[i].productPrice = shoppingCarts[i].productQuantity;
+                    }
+                }
+                async.resolve(shoppingCarts);
+            });
+
+        }, (error) => {
+            console.error('Error while updating ShoppingCart', error);
+            async.reject(error);
+        });
+        return async.promise;
+    }
+
     return {
-        getShoppingCartPerUserID: getShoppingCartPerUserID
+        getShoppingCartPerUserID: getShoppingCartPerUserID,
+        updateShoppingCartQuantity: updateShoppingCartQuantity
     }
 
 });
