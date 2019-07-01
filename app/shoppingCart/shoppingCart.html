@@ -26,11 +26,10 @@
                 </div>
                 <div class="product-price">{{shoppingCart.productPrice}}</div>
                 <div class="product-quantity">
-                    <input type="number" ng-model="shoppingCart.productQuantity" min="1">
+                    <input type="number" ng-model="shoppingCart.productQuantity" ng-change="updateProductQuantityInCart(shoppingCart)" min="1">
                 </div>
                 <div class="product-removal">
-                    <button class="remove-product">Remove</button>
-                    <!--ng-click="removeItemFromCart(shoppingCart)" -->
+                    <button class="remove-product" ng-click="removeProductfromCart(shoppingCart)">Remove</button>
                 </div>
                 <div class="product-line-price">{{shoppingCart.productPrice * shoppingCart.productQuantity}} </div>
                 </input>
