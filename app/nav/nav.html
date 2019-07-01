@@ -22,39 +22,26 @@
                     </li>
                     <li class="nav-item">
                         <div class="header-main-right">
-                            <a href="#!/shoppingCart" class="cart"><i class="fa fa-shopping-cart"></i><span>2</span></a>
+                            <a href="#!/shoppingCart" class="cart"><i class="fa fa-shopping-cart"></i><span>{{productCount}}</span></a>
                             <div class="mini-cart-content">
                                 <div class="mini-top-sec">
-                                    <div class="cart-image">
-                                        <a href="#"><img src="" alt=""></a>
-                                        <span class="quantity">1</span>
+                                    <div class="cart-image" ng-repeat="shoppingCart in shoppingCarts">
+                                        <a href="#"><img class="cart-image-small" ng-src="{{shoppingCart.productImage}}" alt=""></a>
+                                        <span class="quantity">{{shoppingCart.productQuantity}}</span>
                                     </div>
                                     <div class="cart-info">
                                         <a href="#">
-                                            <p>Etiam Eu Neque</p>
+                                            <p>{{shoppingCart.productName}}</p>
                                         </a>
-                                        <p class="cart-price">£300.00</p>
+                                        <p class="cart-price">${{shoppingCart.productPrice}}</p>
                                     </div>
                                     <div class="product-cancel"><a href="#"><i class="fa fa-times-circle"></i></a>
                                     </div>
                                 </div>
-                                <div class="mini-top-sec">
-                                    <div class="cart-image">
-                                        <a href="#"><i class="far fa-shopping-cart"></i><</a>
-                                        <span class="quantity">2</span>
-                                    </div>
-                                    <div class="cart-info">
-                                        <a href="#">
-                                            <p>Etiam Eu Neque</p>
-                                        </a>
-                                        <p class="cart-price">£500.00</p>
-                                    </div>
-                                    <div class="product-cancel"><a href="#"><i class="fa fa-times-circle"></i></a>
-                                    </div>
-                                </div>
+
                                 <div class="mini-bottom-sec">
-                                    <p class="total-amount">AMOUNT <span>£800.00</span></p>
-                                    <div class="button"><a href="checkout.html">CHECKOUT</a></div>
+                                    <p class="total-amount">AMOUNT <span>{{subtotal}}</span></p>
+                                    <div class="btn btn-success"><a href="checkout.html">CHECKOUT</a></div>
                                 </div>
                             </div>
                         </div>
@@ -109,8 +96,8 @@
                             <div class="row">
                                 <div class="col-md-6 nav-dropdown-right">
                                     <a href="#!/products/women/outfits" class="dropdown-item ">Outfits</a>
-                                    <a href="#!/products/women/t-shirts " class="dropdown-item ">T-Shirts</a>
-                                    <a href="#!/products/women/jackets " class="dropdown-item ">Jackets</a>
+                                    <a href="#!/products/women/t-shirts" class="dropdown-item ">T-Shirts</a>
+                                    <a href="#!/products/women/jackets" class="dropdown-item ">Jackets</a>
                                     <a href="#!/products/women/jeans" class="dropdown-item ">Jeans</a>
                                     <a href="#!/products/women/shirts" class="dropdown-item ">Shirts</a>
                                 </div>

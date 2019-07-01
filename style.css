@@ -17,6 +17,10 @@ body {
 
 /***************************************/
 
+.cart-image-small {
+    width: 50px;
+}
+
 .homeImg {
     width: 100%;
     height: 100%;
@@ -97,7 +101,7 @@ div.header-main-right .mini-cart-content {
     z-index: -99;
 }
 
-div.header-main-right div:hover .mini-cart-content {
+div.header-main-right:hover .mini-cart-content {
     opacity: 1;
     z-index: 9999999;
 }

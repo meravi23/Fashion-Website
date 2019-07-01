@@ -55,7 +55,7 @@ app.factory("userSrv", function($q) {
         var async = $q.defer();
         activeUser = null;
 
-        const user = new Parse.User();
+        var user = new Parse.User();
 
         user.set('email', email);
         user.set('password', pwd);
@@ -77,8 +77,8 @@ app.factory("userSrv", function($q) {
         var async = $q.defer();
         activeUser = null;
 
-        const UserParse = new Parse.User();
-        const query = new Parse.Query(UserParse);
+        var UserParse = new Parse.User();
+        var query = new Parse.Query(UserParse);
 
         query.get(userTmp.id).then((user) => {
             // Updates the data we want

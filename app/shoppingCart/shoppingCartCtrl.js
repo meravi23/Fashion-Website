@@ -14,16 +14,20 @@ app.controller("shoppingCartCtrl", function($scope, $location, userSrv, productS
     });
 
     $scope.removeProductfromCart = function(shoppingCart) {
-        userSrv.removeProductfromCart(shoppingCart).then(function(shoppingCarts) {
-            $scope.shoppingCarts = shoppingCarts;
-            $scope.recalculateCart();
+        shoppingCartSrv.deleteShoppingCartProduct(shoppingCart).then(function(shoppingCart) {
+            shoppingCartSrv.getShoppingCartPerUserID().then(function(shoppingCarts) {
+                $scope.shoppingCarts = shoppingCarts;
+                $scope.recalculateCart();
+            }, function(err) {
+                console.error(err);
+            });
         }, function(err) {
             console.error(err);
         });
     }
 
     $scope.updateProductQuantityInCart = function(shoppingCart) {
-        shoppingCartSrv.updateShoppingCartQuantity(shoppingCart, productQuantity).then(function(shoppingCarts) {
+        shoppingCartSrv.updateShoppingCartQuantity(shoppingCart).then(function(shoppingCart) {
             $scope.shoppingCarts = shoppingCarts;
             $scope.recalculateCart();
         }, function(err) {

@@ -11,7 +11,6 @@ app.factory("shoppingCartSrv", function($q, productSrv) {
         this.productImage = " ";
         this.productName = " ";
         this.productDesc = " ";
-        this.linePrice = this.productPrice * this.productQuantity;
     }
 
     function getShoppingCartPerUserID() {
@@ -21,8 +20,8 @@ app.factory("shoppingCartSrv", function($q, productSrv) {
         var shoppingCarts = [];
 
         // Building a query
-        const ShoppingCartParse = Parse.Object.extend('ShoppingCart');
-        const query = new Parse.Query(ShoppingCartParse);
+        var ShoppingCartParse = Parse.Object.extend('ShoppingCart');
+        var query = new Parse.Query(ShoppingCartParse);
         query.equalTo("userID", Parse.User.current());
 
         query.find().then((results) => {
@@ -49,39 +48,56 @@ app.factory("shoppingCartSrv", function($q, productSrv) {
     }
 
 
-    function updateShoppingCartQuantity(shoppingCart, quantity) {
+    function updateShoppingCartQuantity(shoppingCart) {
 
         var async = $q.defer();
         var promises = [];
-        var shoppingCarts = [];
 
         // Building a query
-        const ShoppingCartParse = Parse.Object.extend('ShoppingCart');
-        const query = new Parse.Query(ShoppingCartParse);
+        var ShoppingCartParse = Parse.Object.extend('ShoppingCart');
+        var query = new Parse.Query(ShoppingCartParse);
 
         query.get('shoppingCart.id').then((object) => {
-            object.set('productQuantity', quantity);
+            object.set('productQuantity', shoppingCart.productQuantity);
             object.save().then((response) => {
                 console.log('ShoppingCart found', results);
-                for (let i = 0; i < shoppingCart.length; i++) {
-                    if (shoppingCart[i].id === results.id) {
-                        shoppingCarts[i].quantity = results[i].quantity;
-                        shoppingCart[i].linePrice = shoppingCarts[i].productPrice = shoppingCarts[i].productQuantity;
-                    }
-                }
-                async.resolve(shoppingCarts);
+                async.resolve(results);
+            }, (error) => {
+                console.error('Error while updating ShoppingCart', error);
+                async.reject(error);
             });
-
-        }, (error) => {
-            console.error('Error while updating ShoppingCart', error);
-            async.reject(error);
         });
         return async.promise;
     }
 
+
+    function deleteShoppingCartProduct(shoppingCart) {
+
+        var async = $q.defer();
+        var promises = [];
+
+        // Building a query
+        var ShoppingCartParse = Parse.Object.extend('ShoppingCart');
+        var query = new Parse.Query(ShoppingCartParse);
+
+        query.get('shoppingCart.id').then((object) => {
+            object.destroy().then((response) => {
+                console.log('Deleted ShoppingCart', results);
+                async.resolve(results);
+            }, (error) => {
+                console.error('Error while deleting ShoppingCart', error);
+                async.reject(error);
+            });
+        });
+        return async.promise;
+    }
+
+
+
     return {
         getShoppingCartPerUserID: getShoppingCartPerUserID,
-        updateShoppingCartQuantity: updateShoppingCartQuantity
+        updateShoppingCartQuantity: updateShoppingCartQuantity,
+        deleteShoppingCartProduct: deleteShoppingCartProduct
     }
 
 });
