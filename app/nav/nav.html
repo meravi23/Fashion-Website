@@ -1,15 +1,16 @@
 <div class="menu">
     <div class="top-menu" ng-controller="navCtrl">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Anna Sofair</a>
+            <a class="navbar-brand" href="#!/"><i class="far fa-gem fa-lg"><span class="navbar-brand-name">Anna Sofair</span></i></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-            <form class="form-inline my-2 my-lg-0 ">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-default nav-search-btn" type="submit"><i class="fa fa-search"></i></button>
-            </form>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="nav-search-form form-inline my-2 my-lg-0 ">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-default nav-search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </form>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#"><i class="fa fa-user"></i>
@@ -22,29 +23,34 @@
                     </li>
                     <li class="nav-item">
                         <div class="header-main-right">
-                            <a href="#!/shoppingCart" class="cart"><i class="fa fa-shopping-cart"></i><span>{{productCount}}</span></a>
-                            <div class="mini-cart-content">
-                                <div class="mini-top-sec">
-                                    <div class="cart-image" ng-repeat="shoppingCart in shoppingCarts">
-                                        <a href="#"><img class="cart-image-small" ng-src="{{shoppingCart.productImage}}" alt=""></a>
-                                        <span class="quantity">{{shoppingCart.productQuantity}}</span>
-                                    </div>
-                                    <div class="cart-info">
-                                        <a href="#">
-                                            <p>{{shoppingCart.productName}}</p>
-                                        </a>
-                                        <p class="cart-price">${{shoppingCart.productPrice}}</p>
-                                    </div>
-                                    <div class="product-cancel"><a href="#"><i class="fa fa-times-circle"></i></a>
+                            <a href="#!/shoppingCart" class="cart" data-ng-init="getShoppingCart()"><i class="fa fa-shopping-cart"></i><span>{{productCount}}</span></a>
+                            <div class="mini-cart-content" ng-show="shoppingCarts">
+                                <div class="row clearfix">
+                                    <div class="mini-top-sec">
+                                        <div class="cart-image" ng-repeat="shoppingCart in shoppingCarts">
+                                            <div class="col shoppingCart-summary-left">
+                                                <a href="#!/products/{{shoppingCart.productID.id}}"><img class="cart-image-small" ng-src="{{shoppingCart.productImage}}" alt=""></a>
+                                            </div>
+                                            <div class="col shoppingCart-summary-right">
+                                                <div class="cart-info">
+                                                    <a href="#!/products/{{shoppingCart.productID.id}}">{{shoppingCart.productName}} </a>
+                                                    <p class="cart-price">Size:{{shoppingCart.productSize}}</p>
+                                                    <p class="quantity">Color: {{shoppingCart.productColor}}</p>
+                                                    <p class="cart-price"> Price:{{shoppingCart.productPrice}}</p>
+                                                    <p class="quantity">Qty: {{shoppingCart.productQuantity}}</p>
+                                                    <p class="subtotal">Subtotal: {{shoppingCart.productQuantity * shoppingCart.productPrice}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="mini-bottom-sec">
-                                    <p class="total-amount">AMOUNT <span>{{subtotal}}</span></p>
-                                    <div class="btn btn-success"><a href="checkout.html">CHECKOUT</a></div>
+                                <div class="mini-bottom-sec" ng-show="shoppingCarts">
+                                    <p class="total-amount">Est.TOTAL <span>{{totalTemp}}</span></p>
+                                    <button class="btn btn-success">Checkout</button>
                                 </div>
                             </div>
                         </div>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#!/login" ng-hide="isLoggedIn()"><i class="fa fa-sign-in-alt" aria-hidden="true"></i>Sign In</a>
@@ -58,64 +64,66 @@
             </div>
         </nav>
     </div>
-    <div class="mainmenu">
-        <nav class="nav navbar navbar-expand-lg navbar-light bg-light ">
-            <div class="collapse navbar-collapse " id="navbarSupportedContent ">
-                <ul class="navbar-nav mr-auto ml-auto ">
-                    <li class="nav-item ">
-                        <a class="nav-link " href="# ">HOME</a>
-                    </li>
-                    <li class="nav-item dropdown" uib-dropdown>
-                        <a class="nav-link dropdown-toggle" uib-dropdown-toggle id="navbarDropdownMes" data-toggle="dropdown" aria-haspopup="true " aria-expanded="false" href="javascript:void(0)">
+
+</div>
+<div class="mainmenu">
+    <nav class="nav navbar navbar-expand-lg navbar-light bg-light ">
+        <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+            <ul class="navbar-nav mr-auto ml-auto ">
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">HOME</a>
+                </li>
+                <li class="nav-item dropdown" uib-dropdown>
+                    <a class="nav-link dropdown-toggle" uib-dropdown-toggle id="navbarDropdownMes" data-toggle="dropdown" aria-haspopup="true " aria-expanded="false" href="javascript:void(0)">
                                 MENS
                             </a>
-                        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="navbarDropdownMes">
-                            <div class="row">
-                                <div class="col-md-6 nav-dropdown-right">
-                                    <a href="# " class="dropdown-item ">Outfits</a>
-                                    <a href="# " class="dropdown-item ">T-Shirts</a>
-                                    <a href="# " class="dropdown-item ">Jackets</a>
-                                    <a href="# " class="dropdown-item ">Jeans</a>
-                                    <a href="# " class="dropdown-item ">Shirts</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="# " class="dropdown-item ">Accssesories</a>
-                                    <a href="# " class="dropdown-item ">Watch</a>
-                                    <a href="# " class="dropdown-item ">Sunglass</a>
-                                    <a href="# " class="dropdown-item ">Cap</a>
-                                    <a href="# " class="dropdown-item ">Perfumes</a>
-                                </div>
+                    <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="navbarDropdownMes">
+                        <div class="row">
+                            <div class="col-md-6 nav-dropdown-right">
+                                <a href="# " class="dropdown-item ">Outfits</a>
+                                <a href="# " class="dropdown-item ">T-Shirts</a>
+                                <a href="# " class="dropdown-item ">Jackets</a>
+                                <a href="# " class="dropdown-item ">Jeans</a>
+                                <a href="# " class="dropdown-item ">Shirts</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="# " class="dropdown-item ">Accssesories</a>
+                                <a href="# " class="dropdown-item ">Watch</a>
+                                <a href="# " class="dropdown-item ">Sunglass</a>
+                                <a href="# " class="dropdown-item ">Cap</a>
+                                <a href="# " class="dropdown-item ">Perfumes</a>
                             </div>
                         </div>
-                    </li>
-                    <li class="nav-item dropdown" uib-dropdown>
-                        <a class="nav-link dropdown-toggle" uib-dropdown-toggle id="navbarDropdownMes" data-toggle="dropdown" aria-haspopup="true " aria-expanded="false" href="javascript:void(0)">
+                    </div>
+                </li>
+                <li class="nav-item dropdown" uib-dropdown>
+                    <a class="nav-link dropdown-toggle" uib-dropdown-toggle id="navbarDropdownMes" data-toggle="dropdown" aria-haspopup="true " aria-expanded="false" href="javascript:void(0)">
                                     WOMENS
                             </a>
-                        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="navbarDropdownMes">
-                            <div class="row">
-                                <div class="col-md-6 nav-dropdown-right">
-                                    <a href="#!/products/women/outfits" class="dropdown-item ">Outfits</a>
-                                    <a href="#!/products/women/t-shirts" class="dropdown-item ">T-Shirts</a>
-                                    <a href="#!/products/women/jackets" class="dropdown-item ">Jackets</a>
-                                    <a href="#!/products/women/jeans" class="dropdown-item ">Jeans</a>
-                                    <a href="#!/products/women/shirts" class="dropdown-item ">Shirts</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <a href="# " class="dropdown-item ">Accssesories</a>
-                                    <a href="# " class="dropdown-item ">Watch</a>
-                                    <a href="# " class="dropdown-item ">Sunglass</a>
-                                    <a href="# " class="dropdown-item ">Cap</a>
-                                    <a href="# " class="dropdown-item ">Perfumes</a>
-                                </div>
+                    <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="navbarDropdownMes">
+                        <div class="row">
+                            <div class="col-md-6 nav-dropdown-right">
+                                <a href="#!/products/women/outfits" class="dropdown-item ">Outfits</a>
+                                <a href="#!/products/women/t-shirts" class="dropdown-item ">T-Shirts</a>
+                                <a href="#!/products/women/jackets" class="dropdown-item ">Jackets</a>
+                                <a href="#!/products/women/jeans" class="dropdown-item ">Jeans</a>
+                                <a href="#!/products/women/shirts" class="dropdown-item ">Shirts</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="# " class="dropdown-item ">Accssesories</a>
+                                <a href="# " class="dropdown-item ">Watch</a>
+                                <a href="# " class="dropdown-item ">Sunglass</a>
+                                <a href="# " class="dropdown-item ">Cap</a>
+                                <a href="# " class="dropdown-item ">Perfumes</a>
                             </div>
                         </div>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link " href="# ">ABOUT</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+                    </div>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="# ">ABOUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
 </div>

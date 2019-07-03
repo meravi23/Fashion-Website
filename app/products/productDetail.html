@@ -13,9 +13,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="product-detail-image">
-                    <span ng-style="{'background-image': 'url({{product.image}})'}">
-                    </span>
-                    <img ng-src="{{product.image}}">
+                    <img class="img-fluid" ng-src="{{product.image}}">
                     <div class="detail-socials">
                         <a target="_blank " class="share-facebook " title="Share "></a>
                         <a target="_blank " class="share-twitter " title="Tweet "></a>
@@ -27,19 +25,18 @@
                 <h1 class="product-detail-name">{{product.name}}</h1>
                 <div class="product-detail-price"> ${{product.price | number:2}}</div>
                 <div class="row size-colors">
-                    <div class="header-size col-md-6 clearfix">
-                        <h6>SIZE</h6>
+                    <div class="header-size col-lg-12">
+                        <h6>Size:</h6><span ng-show="$parent.selectedSize">Please select a size</span>
                         <div class="sizes" ng-repeat="size in product.sizes">
-                            <input id="productSize" type="radio" ng-model="product.size" />
-                            <label for="productSize"> {{size}}</label>
-
+                            <input id="productSize-{{size}}" type="radio" name="prdSize" ng-click="setSizeOfProduct(size)" value="{{size}}" ng-model="$parent.selectedSize" />
+                            <label for="productSize-{{size}}" ng-class="{'active-size' : productSizeTmp === size}"> {{size}}</label>
                         </div>
                     </div>
-                    <div class="header-color col-md-6 clearfix">
-                        <h6>COLOR</h6>
+                    <div class="header-color col-lg-12">
+                        <h6>Color:</h6><span ng-show="$parent.selectedSize">Please select a color</span>
                         <div class="colors" ng-repeat="color in product.colors">
-                            <input quickbeam="color " id="productColor" type="radio" ng-model="product.color" />
-                            <label for="productColor">
+                            <input id="productColor-{{color}}" type="radio" name="prdColor" ng-click="setColorOfProduct(color)" value={{color}} ng-model="$parent.selectedColor">
+                            <label for="productColor-{{color}}" ng-class="{'active-color' : productColorTmp === color}" ng-style="{ 'border': '1px solid {{color}}'}">
                           <span ng-style="{ 'background-color': '{{color}}'}"></span>
                         </label>
                         </div>
@@ -48,12 +45,10 @@
                         <a>Size guide</a>
                     </div> -->
                 </div>
-
-                <!-- <form method="post " enctype="multipart/form-data " id="AddToCartForm "> -->
                 <form id="addToCartForm ">
                     <div class="btn-and-quantity ">
-                        <input type="number" class="product-detail-quantity" placeholder="Qty." min="1" max="999" maxlength="3">
-                        <button class="addToCartText btn btn-success" ng-click="addProducToShoppingCart(product)"><i class="fa fa-shopping-cart "></i>
+                        <input type="number" class="product-detail-quantity" min="1" max="999" maxlength="3" ng-model="productQuantityTmp">
+                        <button class="addToCartText btn btn-success" ng-click="addProducToShoppingCart()"><i class="fa fa-shopping-cart "></i>
                                 Add to Cart</button>
                     </div>
                 </form>

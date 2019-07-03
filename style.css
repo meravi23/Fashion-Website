@@ -17,6 +17,58 @@ body {
 
 /***************************************/
 
+.fa-gem {
+    color: black;
+}
+
+.navbar-brand-name {
+    font-family: 'Berkshire Swash', cursive;
+    font-weight: 300;
+    font-size: 36px;
+    /* font-family: 'Lobster', cursive;
+    font-family: 'Courgette', cursive;
+    font-family: 'Cookie', cursive;
+    font-family: 'Playfair Display SC', serif;
+    font-family: 'Sacramento', cursive;
+    font-family: 'Tangerine', cursive;
+    font-family: 'Allura', cursive;
+    font-family: 'Playball', cursive;
+    font-family: 'IM Fell English SC', serif;
+    font-family: 'Cinzel Decorative', cursive;
+    font-family: 'Kumar One', cursive;
+    font-family: 'Rye', cursive;
+    font-family: 'Rouge Script', cursive;
+    font-family: 'Cormorant SC', serif;
+    font-family: 'Meddon', cursive;
+    font-family: 'Sail', cursive;
+    font-family: 'Lovers Quarrel', cursive;
+    font-family: 'Diplomata', cursive;
+    font-family: 'Ruthie', cursive;
+    font-family: 'IM Fell Great Primer SC', serif;
+    font-family: 'Ruge Boogie', cursive;
+    font-family: 'Jacques Francois Shadow', cursive; */
+}
+
+.nav-search-form {
+    margin: 0 auto;
+}
+
+.nav-search-btn {
+    margin: 0;
+    padding-left: 0;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.dropdown-menu {
+    width: 300px;
+    ;
+}
+
 .cart-image-small {
     width: 50px;
 }
@@ -55,6 +107,7 @@ body {
 .nav-item {
     margin-right: 5px;
     color: red;
+    list-style-type: none;
 }
 
 .menu {
@@ -91,7 +144,6 @@ div.header-main-right .mini-cart-content {
     background: #ffffff none repeat scroll 0 0;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     opacity: 0;
-    padding: 10px 0 0;
     position: absolute;
     right: 0;
     top: 60px;
@@ -99,6 +151,12 @@ div.header-main-right .mini-cart-content {
     transition: all 0.5s ease 0s;
     width: 280px;
     z-index: -99;
+    padding: 22px 14px 18px;
+    display: inline-block;
+    font-family: FuturaStdBold;
+    text-transform: uppercase;
+    color: #00174F;
+    letter-spacing: 2.5px;
 }
 
 div.header-main-right:hover .mini-cart-content {
@@ -115,14 +173,12 @@ div.header-main-right:hover .mini-cart-content {
 }
 
 .cart-image {
-    float: left;
     margin-right: 10px;
-    width: 50px;
+    /* width: 50px; */
 }
 
 .cart-info,
 .cart-info p.cart-price {
-    float: left;
     font-family: "montserratlight";
     font-size: 13px;
 }
@@ -151,6 +207,11 @@ div.header-main-right div .mini-cart-content .cart-img-details .cart-img-contaen
     color: #6f6f6f;
     font-weight: 600;
     text-align: left;
+}
+
+.shoppingCart-summary-right,
+.shoppingCart-summary-left {
+    float: left;
 }
 
 
@@ -508,9 +569,6 @@ ul.s-f-widget {
     float: right;
 }
 
-
-/* Make adjustments for tablet */
-
 @media screen and (max-width: 650px) {
     .shopping-cart {
         margin: 0;
@@ -589,8 +647,8 @@ ul.s-f-widget {
 
 .products-gallery {
     min-height: 700px;
-    height: ;
-    background-image: url100vh(https: //bit.ly/2lpu3Uh);
+    height: 100vh;
+    background-image: url'(https: //bit.ly/2lpu3Uh)';
     background-blend-mode: multiply;
 }
 
@@ -728,7 +786,8 @@ ul.s-f-widget {
     padding: 35px 0 58px;
 }
 
-.sizes, .colors {
+.sizes,
+.colors {
     float: left;
     margin: 36px 20px 0 0;
 }
@@ -808,6 +867,24 @@ ul.s-f-widget {
     display: none;
 }
 
+.header-size {
+    padding: 0 80px 0 0;
+}
+
+.header-color {
+    padding: 0;
+    margin-top: 50px;
+}
+
 .product-detail-quantity {
     margin: 0 20px 20px 0;
+}
+
+.active-size {
+    background-color: #086fcf;
+    color: white !important;
+}
+
+.active-color {
+    border: 2px solid black !important;
 }

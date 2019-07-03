@@ -15,6 +15,10 @@ app.controller("shoppingCartCtrl", function($scope, $location, userSrv, productS
 
     $scope.removeProductfromCart = function(shoppingCart) {
         shoppingCartSrv.deleteShoppingCartProduct(shoppingCart).then(function(shoppingCart) {
+            var index = $scope.shoppingCarts.indexOf(shoppingCart);
+            if (index > -1) {
+                $scope.shoppingCarts.splice(index, 1);
+            }
             shoppingCartSrv.getShoppingCartPerUserID().then(function(shoppingCarts) {
                 $scope.shoppingCarts = shoppingCarts;
                 $scope.recalculateCart();

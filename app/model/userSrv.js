@@ -45,6 +45,7 @@ app.factory("userSrv", function($q) {
 
     function logout() {
         activeUser = null;
+        ParseUser.logOut();
     }
 
     function getActiveUser() {

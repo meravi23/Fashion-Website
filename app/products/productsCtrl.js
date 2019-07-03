@@ -3,36 +3,28 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
     $scope.products = [];
 
     $scope.categoryGender = {
-        "1": "men",
-        "2": "women"
+        "men": "1",
+        "women": "2"
     };
 
     $scope.categoryType = {
-        "1": "outfits",
-        "2": "t-shirts",
-        "3": "jackets",
-        "4": "jeans",
-        "5": "shirts",
-        "6": "accessories",
-        "7": "watch",
-        "8": "sunglass",
-        "9": "cap",
-        "10": "perfumes"
+        "outfits": "1",
+        "t-shirts": "2",
+        "jackets": "3",
+        "jeans": "4",
+        "shirts": "5",
+        "accessories": "6",
+        "watch": "7",
+        "sunglass": "8",
+        "cap": "9",
+        "perfumes": "10"
     }
 
-    Object.prototype.getKey = function(value) {
-        for (var key in this) {
-            if (this[key] == value) {
-                return key;
-            }
-        }
-        return null;
-    };
 
     $scope.categoryName = $routeParams.category1.toUpperCase() + "'S " + $routeParams.category2.toUpperCase();
 
-    $scope.categoryId = $scope.categoryGender.getKey($routeParams.category1) +
-        $scope.categoryType.getKey($routeParams.category2);
+    $scope.categoryId = $scope.categoryGender[$routeParams.category1] +
+        $scope.categoryType[$routeParams.category2];
 
     productSrv.getProductbyCategoryID($scope.categoryId).then(function(products) {
         $scope.products = products;
@@ -43,28 +35,5 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
     $scope.openProductDetails = function(productID) {
         $location.path("/products/" + productID);
     };
-
-    // var colorButton = $(".colors li");
-
-    // colorButton.on("click", function() {
-    //     // console.log('clicked');
-
-    //     // Remove class from currently active button
-    //     $(".colors > li").removeClass("active-color");
-
-    //     // Add class active to clicked button
-    //     $(this).addClass("active-color");
-
-    //     // Get background color of clicked
-    //     var newColor = $(this).attr("data-color");
-    //     // alert(newColor);
-
-    //     // Change background of everything with class .bg-color
-    //     $(".merry-christmas").css("background-color", newColor);
-
-    //     // Change color of everything with class .text-color
-    //     // $(".text-color").css("color", newColor);
-    // });
-
 
 })
