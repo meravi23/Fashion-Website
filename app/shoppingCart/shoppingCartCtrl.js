@@ -50,4 +50,8 @@ app.controller("shoppingCartCtrl", function($scope, $location, userSrv, productS
         return $scope.subtotal;
     }
 
+    $scope.checkout = function() {
+        $location.path("/checkout");
+    }
+
 })

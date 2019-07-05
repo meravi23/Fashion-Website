@@ -55,9 +55,41 @@ app.factory("productSrv", function($q) {
     }
 
 
+    function addProduct(product) {
+        var async = $q.defer();
+
+        const ProductParse = Parse.Object.extend('Product');
+        const newProductObject = new ProductParse();
+
+        newProductObject.set('image', new Parse.File(product.image, { base64: btoa("My file content") }));
+        newProductObject.set('name', product.name);
+        newProductObject.set('desc', product.desc);
+        newProductObject.set('discount', product.discount);
+        newProductObject.set('price', product.price);
+        newProductObject.set('stockQuantity', product.quantity);
+        newProductObject.set('categoryID', product.categoryId);
+        newProductObject.set('sizes', product.sizes);
+        newProductObject.set('colors', product.colors);
+
+        newProductObject.save().then(
+            (result) => {
+                console.log('Product created', result);
+                async.resolve(new Product(result));
+            },
+            (error) => {
+                console.error('Error while creating Product: ', error);
+                async.reject(error);
+            }
+        );
+
+        return async.promise;
+    }
+
+
     return {
         getProductbyCategoryID: getProductbyCategoryID,
-        getProductbyID: getProductbyID
+        getProductbyID: getProductbyID,
+        addProduct: addProduct
     }
 
 });

@@ -29,7 +29,6 @@ app.controller("productDetailCtrl", function($scope, $log, productSrv, $routePar
 
     $scope.setSizeOfProduct = function(size) {
         $scope.productSizeTmp = size;
-        console.log(size);
     }
 
     $scope.setColorOfProduct = function(color) {

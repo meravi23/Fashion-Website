@@ -1,4 +1,4 @@
-var app = angular.module("fashionDesignerApp", ["ngRoute", "ui.bootstrap"]);
+var app = angular.module("fashionDesignerApp", ["ngRoute", "ui.bootstrap", "ngImageInputWithPreview"]);
 
 app.config(function($routeProvider) {
     $routeProvider
@@ -21,6 +21,9 @@ app.config(function($routeProvider) {
         }).when("/shoppingCart", {
             templateUrl: "app/shoppingCart/shoppingCart.html",
             controller: "shoppingCartCtrl"
+        }).when("/checkout", {
+            templateUrl: "app/checkout/checkout.html",
+            controller: "checkoutCtrl"
         }).otherwise({
             templateUrl: "404.html"
         });

@@ -140,6 +140,10 @@ div a.cart i.fa-shopping-cart {
     padding-top: 3px
 }
 
+.header-main-right {
+    padding: 8px;
+}
+
 div.header-main-right .mini-cart-content {
     background: #ffffff none repeat scroll 0 0;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
@@ -887,4 +891,78 @@ ul.s-f-widget {
 
 .active-color {
     border: 2px solid black !important;
+}
+
+
+/*==================
+ CHECKOUT PAGE
+====================*/
+
+#checkout .card-header a {
+    text-decoration: none;
+}
+
+.checkout-area {
+    display: inline;
+    padding: 50px 0;
+}
+
+.checkout-area .mt-1 {
+    background-color: transparent;
+    font-size: 18px;
+    padding: 20px 15px;
+}
+
+.aa-order-summary-area {
+    margin-bottom: 30px;
+}
+
+.checkout-area .aa-order-summary-area .table {
+    border: 1px solid #ccc;
+}
+
+.checkout-area .aa-order-summary-area .table thead tr th {
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.checkout-area .aa-order-summary-area .table tbody tr td {
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+
+.checkout-area .aa-order-summary-area .table tbody tr td strong {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.checkout-area .aa-order-summary-area .table tfoot tr th {
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+
+.checkout-area .aa-order-summary-area .table tfoot tr td {
+    text-align: center;
+}
+
+.checkout-area .aa-payment-method {
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.checkout-area .aa-payment-method label {
+    width: 100%;
+    font-weight: normal;
+}
+
+.checkout-area .aa-payment-method img {
+    margin-top: -10px;
+    width: 80%;
+}
+
+.checkout-area .aa-payment-method input[type="submit"] {
+    display: block;
+    margin-top: 15px;
+    padding: 8px 12px;
+    width: 100%;
 }

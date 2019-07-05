@@ -97,7 +97,7 @@ app.factory("shoppingCartSrv", function($q, productSrv, userSrv) {
 
         var async = $q.defer();
         var promises = [];
-        var shoppingCart = {};
+        var shoppingCartTemp = {};
         // Building a query
 
         const ShoppingCartParse = Parse.Object.extend('ShoppingCart');
@@ -115,9 +115,9 @@ app.factory("shoppingCartSrv", function($q, productSrv, userSrv) {
         shoppingCartNewObject.set("productID", pointerToProduct);
 
         shoppingCartNewObject.save().then((result) => {
-            shoppingCart = new ShoppingCart(result);
-            async.resolve(shoppingCart);
-            console.log('ShoppingCart created', result);
+            shoppingCartTemp = new ShoppingCart(result);
+            async.resolve(shoppingCartTemp);
+            console.log('ShoppingCart created', shoppingCartTemp);
         }, (error) => {
             console.error('Error while creating ShoppingCart: ', error);
             async.reject(error);
