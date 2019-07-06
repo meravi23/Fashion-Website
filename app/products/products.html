@@ -1,8 +1,8 @@
 <div>
     <app-navbar></app-navbar>
-    <div class="products-gallery">
+    <div class="products-gallery container">
         <div class="handleproducts" ng-show="userAdminSw">
-            <button class="btn btn-success mr-auto" ng-click="openNewProductModal()">Add Product</button>
+            <button class="btn btn-info add-product" ng-click="openNewProductModal()">Add Product</button>
         </div>
         <div class="container" ng-hide="filteredProducts.length === 0">
             <div class="row">

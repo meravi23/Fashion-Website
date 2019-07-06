@@ -83,13 +83,13 @@ app.factory("productSrv", function($q) {
         const ProductParse = Parse.Object.extend('Product');
         const newProductObject = new ProductParse();
 
-        newProductObject.set('image', new Parse.File(product.image, { base64: btoa("My file content") }));
+        newProductObject.set('image', new Parse.File(product.name + ".jpg", { base64: product.image }));
         newProductObject.set('name', product.name);
         newProductObject.set('desc', product.desc);
         newProductObject.set('discount', product.discount);
         newProductObject.set('price', product.price);
         newProductObject.set('stockQuantity', product.quantity);
-        newProductObject.set('categoryID', product.categoryId);
+        newProductObject.set('categoryID', product.categoryID);
         newProductObject.set('sizes', product.sizes);
         newProductObject.set('colors', product.colors);
 
@@ -108,11 +108,17 @@ app.factory("productSrv", function($q) {
     }
 
 
+    function deleteProduct(product) {
+        var async = $q.defer();
+
+    }
+
     return {
         getAllProducts: getAllProducts,
         getProductbyCategoryID: getProductbyCategoryID,
         getProductbyID: getProductbyID,
-        addProduct: addProduct
+        addProduct: addProduct,
+        deleteProduct: deleteProduct
     }
 
 });

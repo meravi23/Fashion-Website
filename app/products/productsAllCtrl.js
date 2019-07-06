@@ -1,8 +1,14 @@
-app.controller("productsAllCtrl", function($scope, $location, productSrv, $log, $routeParams, $uibModal, $rootScope) {
+app.controller("productsAllCtrl", function($scope, $location, userSrv, productSrv, $log, $routeParams, $uibModal, $rootScope) {
 
     $scope.products = [];
-
+    $scope.userAdminSw = false;
     $scope.categoryName = "All Products";
+
+    userSrv.getCurrentUser().then(function(current_user) {
+        $scope.userAdminSw = current_user.adminsw;
+    }, function(err) {
+        console.error(err);
+    });
 
     productSrv.getAllProducts().then(function(products) {
         $scope.products = products;
@@ -24,12 +30,13 @@ app.controller("productsAllCtrl", function($scope, $location, productSrv, $log, 
 
         modalInstance.result.then(function(newProduct) {
             // this will wake in case the user added a new product
-            $scope.recipes.push(newProduct);
+            $scope.products.push(newProduct);
         }, function() {
             // this will wake up in case the user canceled the new product
             console.log("User canceled new product");
         });
     }
+
     $scope.query = " ";
     $scope.query = $rootScope.query;
     $rootScope.query = " ";

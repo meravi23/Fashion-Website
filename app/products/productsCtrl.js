@@ -51,7 +51,7 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
 
         modalInstance.result.then(function(newProduct) {
             // this will wake in case the user added a new product
-            $scope.recipes.push(newProduct);
+            $scope.products.push(newProduct);
         }, function() {
             // this will wake up in case the user canceled the new product
             console.log("User canceled new product");

@@ -10,12 +10,10 @@
         </div>
     </div> -->
     <div class="product-detail container">
-        <div class="handleproducts">
-            <button class="btn btn-primary ml-auto" ng-click="deleteProductModal()">Delete Product</button>
-        </div>
-        <div class="handleproducts">
+
+        <!-- <div class="handleproducts">
             <button class="btn btn-primary ml-auto" ng-click="updateProductModal()">Update Product</button>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-md-5">
                 <div class="product-detail-image">
@@ -29,6 +27,7 @@
             </div>
             <div class="col-md-7">
                 <h1 class="product-detail-name">{{product.name}}</h1>
+                <h6 class="product-detail-name ">{{product.desc}}</h6>
                 <div class="product-detail-price"> ${{product.price | number:2}}</div>
                 <div class="row size-colors">
                     <div class="header-size col-lg-12">
@@ -56,10 +55,9 @@
                         <input type="number" class="product-detail-quantity" min="1" max="999" maxlength="3" ng-model="productQuantityTmp">
                         <button class="addToCartText btn btn-success" ng-click="addProducToShoppingCart()"><i class="fa fa-shopping-cart "></i>
                                 Add to Cart</button>
+                        <button ng-show="userAdminSw" class="btn btn-info delete-product" ng-click="deleteProduct(product)">Delete Product</button>
                     </div>
                 </form>
-                <div class="product-detail-name ">{{product.desc}}</div>
-                <strong class="quick-cart-text ">Pay<br></strong>
             </div>
         </div>
     </div>

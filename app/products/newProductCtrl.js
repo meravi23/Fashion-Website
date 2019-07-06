@@ -1,8 +1,8 @@
 app.controller("newProductCtrl", function($scope, productSrv, $log, $uibModalInstance, $rootScope) {
+
     $scope.product = {};
-
-    $scope.availableSizes = ["34", "36", "38", "40", "42", "44", "46", "48"];
-
+    $scope.product.sizes = [36];
+    $scope.product.colors = [" "];
     $scope.categoryGender = [
         "Men",
         "Women"
@@ -21,8 +21,20 @@ app.controller("newProductCtrl", function($scope, productSrv, $log, $uibModalIns
         "Perfumes"
     ];
 
+    $scope.addSize = function() {
+        var newSize = [36];
+        $scope.product.sizes.push(newSize);
+    }
+
+    $scope.addColor = function() {
+        var newColor = [" "];
+        $scope.product.colors.push(newColor);
+    }
+
     $scope.addProduct = function() {
-        $scope.categoryId = $rootScope.categoryId;
+        $scope.product.categoryID = ($scope.categoryGender.indexOf($scope.product.categoryGender) + 1).toString() +
+            ($scope.categoryType.indexOf($scope.product.categoryType) + 1).toString();
+        $scope.product.image = $scope.product.image.src;
         productSrv.addProduct($scope.product).then(function(newProduct) {
             $log.info("new product was added: " + JSON.stringify(newProduct));
             // Closing the modal

@@ -794,6 +794,16 @@ ul.s-f-widget {
     color: #afafaf;
 }
 
+.dynamic-add-field {
+    width: 50px;
+    margin: 3px;
+}
+
+.delete-product,
+.add-product {
+    margin: 10px 0 10px 5px;
+}
+
 
 /***************************************/
 

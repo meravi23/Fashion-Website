@@ -1,15 +1,22 @@
-app.controller("productDetailCtrl", function($scope, $log, productSrv, $routeParams, shoppingCartSrv, $location) {
+app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, $routeParams, shoppingCartSrv, $location) {
 
     $scope.product = {};
     $scope.id = $routeParams.id;
     $scope.productColorTmp = " ";
     $scope.productSizeTmp = " ";
     $scope.productQuantityTmp = 1;
+    $scope.userAdminSw = false;
 
     productSrv.getProductbyID($routeParams.id).then(function(product) {
         $scope.product = product;
     }, function(err) {
         $log.error(err);
+    });
+
+    userSrv.getCurrentUser().then(function(current_user) {
+        $scope.userAdminSw = current_user.adminsw;
+    }, function(err) {
+        console.error(err);
     });
 
     $scope.addProducToShoppingCart = function() {
@@ -33,5 +40,14 @@ app.controller("productDetailCtrl", function($scope, $log, productSrv, $routePar
 
     $scope.setColorOfProduct = function(color) {
         $scope.productColorTmp = color;
+    }
+
+    $scope.deleteProduct = function(product) {
+        productSrv.deleteProduct($product).then(function(product) {
+            $scope.product = product;
+        }, function(err) {
+            $log.error(err);
+        });
+
     }
 });
