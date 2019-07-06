@@ -1,5 +1,6 @@
-app.controller("productsCtrl", function($scope, $location, productSrv, $log, $routeParams, $uibModal, $rootScope) {
+app.controller("productsCtrl", function($scope, $location, productSrv, $log, $routeParams, $uibModal, $rootScope, userSrv) {
 
+    $scope.userAdminSw = false;
     $scope.products = [];
     $scope.categoryGender = {
         "men": "1",
@@ -19,6 +20,11 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
         "perfumes": "10"
     }
 
+    userSrv.getCurrentUser().then(function(current_user) {
+        $scope.userAdminSw = current_user.adminsw;
+    }, function(err) {
+        console.error(err);
+    });
 
     $scope.categoryName = $routeParams.category1.toUpperCase() + "'S " + $routeParams.category2.toUpperCase();
 
@@ -35,7 +41,6 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
     $scope.openProductDetails = function(productID) {
         $location.path("/products/" + productID);
     };
-
 
     // function for opening the modal using UI Bootstrap
     $scope.openNewProductModal = function() {
@@ -61,5 +66,6 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
             return false;
         }
     };
+
 
 })

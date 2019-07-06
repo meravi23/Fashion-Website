@@ -57,7 +57,7 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
 
     $scope.recalculateCart = function() {
         $scope.subtotal = 0;
-        if ($scope.shoppingCarts.length > 0) {
+        if ($scope.shoppingCarts && $scope.shoppingCarts.length > 0) {
             $shoppingCartIsEmpty = true;
             for (var i = 0; i < $scope.shoppingCarts.length; i++) {
                 $scope.subtotal += $scope.shoppingCarts[i].productPrice * $scope.shoppingCarts[i].productQuantity;
@@ -65,4 +65,12 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
         }
         return $scope.subtotal;
     }
+
+    // $scope.isAdminUser = function() {
+    //     userSrv.getCurrentUser().then(function(current_user) {
+    //         return current_user.adminsw;
+    //     });
+    //     return false;
+    // }
+
 })

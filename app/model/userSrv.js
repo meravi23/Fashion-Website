@@ -19,7 +19,8 @@ app.factory("userSrv", function($q) {
     }
 
     function isLoggedIn() {
-        return activeUser ? true : false;
+        // return activeUser ? true : false;
+        return Parse.User.current() ? true : false;
     }
 
     // login will check if the user and password exists. If so it will update the active user 
@@ -45,11 +46,13 @@ app.factory("userSrv", function($q) {
 
     function logout() {
         activeUser = null;
-        ParseUser.logOut();
+        //  ParseUser.logOut();
+        Parse.User.logOut();
     }
 
     function getActiveUser() {
-        return activeUser;
+        // return activeUser;
+        return Parse.User.current();
     }
 
     function addUserbyEmailPsw(email, pwd) {
@@ -68,11 +71,32 @@ app.factory("userSrv", function($q) {
             async.resolve(activeUser);
         }).catch(error => {
             console.error('Error while signing up user', error);
+            async.reject(error);
         });
 
         return async.promise;
     }
 
+
+    function getCurrentUser() {
+        var async = $q.defer();
+        activeUser = null;
+
+        var UserParse = new Parse.User();
+        const query = new Parse.Query(UserParse);
+
+        query.get(Parse.User.current().id).then((user) => {
+            console.log('User found', user);
+            activeUser = new User(user);
+            async.resolve(activeUser);
+        }, (error) => {
+            console.error('Error while fetching user', error);
+            async.reject(error);
+        });
+
+        return async.promise;
+
+    }
 
     function updateUser(userTmp) {
         var async = $q.defer();
@@ -103,6 +127,7 @@ app.factory("userSrv", function($q) {
                 async.resolve(activeUser);
             }).catch(error => {
                 console.error('Error while updating user', error);
+                async.reject(error);
             });
         });
         return async.promise;
@@ -111,6 +136,7 @@ app.factory("userSrv", function($q) {
 
     return {
         isLoggedIn: isLoggedIn,
+        getCurrentUser: getCurrentUser,
         login: login,
         logout: logout,
         getActiveUser: getActiveUser,

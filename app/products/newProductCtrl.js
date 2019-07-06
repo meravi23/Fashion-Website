@@ -3,6 +3,23 @@ app.controller("newProductCtrl", function($scope, productSrv, $log, $uibModalIns
 
     $scope.availableSizes = ["34", "36", "38", "40", "42", "44", "46", "48"];
 
+    $scope.categoryGender = [
+        "Men",
+        "Women"
+    ];
+
+    $scope.categoryType = [
+        "Outfits",
+        "T-shirts",
+        "Jackets",
+        "Jeans",
+        "Shirts",
+        "Accessories",
+        "Watch",
+        "Sunglass",
+        "Cap",
+        "Perfumes"
+    ];
 
     $scope.addProduct = function() {
         $scope.categoryId = $rootScope.categoryId;
