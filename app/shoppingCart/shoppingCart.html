@@ -2,8 +2,8 @@
     <app-navbar></app-navbar>
     <div class="container">
         <h1>Shopping Cart</h1>
-        <h6 ng-show="shoppingCartIsEmpty">YOUR SHOPPING CART IS EMPTY.</h6>
-        <div ng-hide="shoppingCartIsEmpty" class="shopping-cart">
+        <h6 class="text-center" ng-hide="shoppingCarts.length > 0">YOUR SHOPPING CART IS EMPTY.</h6>
+        <div ng-show="shoppingCarts.length> 0" class="shopping-cart">
 
             <div class="column-labels">
                 <label class="product-image">Image</label>
@@ -17,12 +17,17 @@
             <div class="product" ng-repeat="shoppingCart in shoppingCarts">
 
                 <div class="product-image">
-                    <img src="{{shoppingCart.productImage}}">
+                    <a href="#!/products/{{shoppingCart.productID.id}}">
+                        <img src="{{shoppingCart.productImage}}"></a>
                 </div>
                 <div class="product-details">
-                    <div class="product-title">{{shoppingCart.productName}}</div>
-                    <p class="product-description"> {{shoppingCart.productDesc}}</p>
-                    <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                    <div class="product-title"><a href="#!/products/{{shoppingCart.productID.id}}">
+                        {{shoppingCart.productName}}</a></div>
+                    <p class="product-size"> <span class="bold"> Size:</span> {{shoppingCart.productSize}}</p>
+                    <p class="product-color"><span class="bold">Color:</span>
+                        <span class="color-circle" ng-style="{ 'background-color': '{{shoppingCart.productColor}}'}"></span>
+                    </p>
+                    <span class="bold">Status: </span><span class="text-success"><strong>In Stock</strong></span>
                 </div>
                 <div class="product-price">{{shoppingCart.productPrice}}</div>
                 <div class="product-quantity">
@@ -54,8 +59,8 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-success" href="#!/"><i class="fa fa-shopping-cart"></i> Continue Shopping</button>
-        <button ng-hide="shoppingCartIsEmpty" ng-click="checkout()" class="checkout btn btn-success" type="button">Checkout</button>
+        <button class="btn btn-success" ng-click="continueShopping()"><i class="fa fa-shopping-cart"></i> Continue Shopping</button>
+        <button ng-show="shoppingCarts.length > 0" ng-click="checkout()" class="checkout btn btn-success">Checkout</button>
     </div>
     <app-footer></app-footer>
 </div>

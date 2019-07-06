@@ -1,7 +1,7 @@
 <div></div>
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="lostPasswordPage">
+    <div class="lostPasswordPage" ng-hide="submitForgotPsw">
         <h1 class="myAccountTitle">MY ACCOUNT</h1>
         <h2 class="myAccountSubTitle">LOST PASSWORD</h2>
         <div class="lostPswForm">
@@ -12,8 +12,12 @@
                 <label for="email">Enter email</label>
                 <input type="email" class="form-control" id="email">
             </div>
-            <button type="submit" class="btn btn-success ">Submit</button>
+            <button ng-click="submitForgotPsw=true" class="btn btn-success ">Submit</button>
         </form>
+    </div>
+    <div class="container" ng-show="submitForgotPsw">
+        <h1 class="text-center mt-30 mb-70">THANK YOU.</h1>
+        <p class="text-center mb-200"> If an account for this e-mail address exists, you will receive instructions on how to reset your password.</p>
     </div>
 </div>
 <app-footer></app-footer>

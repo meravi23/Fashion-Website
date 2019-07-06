@@ -1,12 +1,12 @@
 app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $location, $rootScope) {
 
     $scope.user = userSrv.getActiveUser();
-    $scope.query = " ";
     $scope.productCount = 0;
 
-    // $scope.filterProduct = function() {
-    //     $location.path("/products");
-    // }
+    $scope.filterProduct = function(query) {
+        $rootScope.query = query;
+        $location.path("/products");
+    }
 
     $scope.isLoggedIn = function() {
         return userSrv.isLoggedIn();
@@ -51,4 +51,18 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
         return $scope.totalTemp;
     }
 
+    $scope.checkout = function() {
+        $location.path("/checkout");
+    }
+
+    $scope.recalculateCart = function() {
+        $scope.subtotal = 0;
+        if ($scope.shoppingCarts.length > 0) {
+            $shoppingCartIsEmpty = true;
+            for (var i = 0; i < $scope.shoppingCarts.length; i++) {
+                $scope.subtotal += $scope.shoppingCarts[i].productPrice * $scope.shoppingCarts[i].productQuantity;
+            }
+        }
+        return $scope.subtotal;
+    }
 })

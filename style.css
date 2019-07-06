@@ -4,8 +4,12 @@
 
 body {
     padding: 0px 30px 30px 20px;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
     font-weight: 100;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 
@@ -17,36 +21,45 @@ body {
 
 /***************************************/
 
+.about-img {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.about-title-par {
+    margin-bottom: 100px;
+}
+
 .fa-gem {
     color: black;
+}
+
+.about-title {
+    font-family: 'Berkshire Swash', cursive;
+    font-weight: 300;
+    font-size: 36px;
+    margin: 40px 0 40px 0;
+    text-align: center;
+}
+
+.about-story {
+    line-height: 2em;
+}
+
+.store-main-title {
+    text-align: center;
+    margin: 40px 0 40px 0;
+}
+
+.iframe-div iframe {
+    margin: 0 auto;
 }
 
 .navbar-brand-name {
     font-family: 'Berkshire Swash', cursive;
     font-weight: 300;
     font-size: 36px;
-    /* font-family: 'Lobster', cursive;
-    font-family: 'Courgette', cursive;
-    font-family: 'Cookie', cursive;
-    font-family: 'Playfair Display SC', serif;
-    font-family: 'Sacramento', cursive;
-    font-family: 'Tangerine', cursive;
-    font-family: 'Allura', cursive;
-    font-family: 'Playball', cursive;
-    font-family: 'IM Fell English SC', serif;
-    font-family: 'Cinzel Decorative', cursive;
-    font-family: 'Kumar One', cursive;
-    font-family: 'Rye', cursive;
-    font-family: 'Rouge Script', cursive;
-    font-family: 'Cormorant SC', serif;
-    font-family: 'Meddon', cursive;
-    font-family: 'Sail', cursive;
-    font-family: 'Lovers Quarrel', cursive;
-    font-family: 'Diplomata', cursive;
-    font-family: 'Ruthie', cursive;
-    font-family: 'IM Fell Great Primer SC', serif;
-    font-family: 'Ruge Boogie', cursive;
-    font-family: 'Jacques Francois Shadow', cursive; */
 }
 
 .nav-search-form {
@@ -70,7 +83,7 @@ body {
 }
 
 .cart-image-small {
-    width: 50px;
+    width: 80px;
 }
 
 .homeImg {
@@ -125,7 +138,7 @@ div a.cart i.fa-shopping-cart {
     font-size: 17px;
 }
 
-.cart>span {
+.shopping-cart-counter {
     background: #ef5656 none repeat scroll 0 0;
     border-radius: 50%;
     color: #fff;
@@ -133,15 +146,14 @@ div a.cart i.fa-shopping-cart {
     font-size: 13px;
     height: 21px;
     left: 9px;
-    position: absolute;
     text-align: center;
-    top: 2px;
     width: 21px;
     padding-top: 3px
 }
 
 .header-main-right {
     padding: 8px;
+    position: relative;
 }
 
 div.header-main-right .mini-cart-content {
@@ -149,15 +161,14 @@ div.header-main-right .mini-cart-content {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
     opacity: 0;
     position: absolute;
-    right: 0;
-    top: 60px;
+    right: 20px;
+    top: 40px;
     transform-origin: 0 0 0;
     transition: all 0.5s ease 0s;
     width: 280px;
     z-index: -99;
-    padding: 22px 14px 18px;
+    padding: 10px 5px 10px 5px;
     display: inline-block;
-    font-family: FuturaStdBold;
     text-transform: uppercase;
     color: #00174F;
     letter-spacing: 2.5px;
@@ -170,30 +181,41 @@ div.header-main-right:hover .mini-cart-content {
 
 .mini-top-sec {
     border-bottom: 0 none;
+    margin-top: 10px;
     margin-bottom: 10px;
-    overflow: hidden;
-    padding: 12px 12px 0;
+    overflow: auto;
+    padding: 12px 12px 10px;
     position: relative;
+    height: 100vh;
+}
+
+.color-circle {
+    border-radius: 50%;
+    border: 1px solid black;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
 }
 
 .cart-image {
-    margin-right: 10px;
+    margin-right: 5px;
+    margin-bottom: 20px;
     /* width: 50px; */
 }
 
 .cart-info,
 .cart-info p.cart-price {
-    font-family: "montserratlight";
     font-size: 13px;
 }
 
+
+/*
 .cart-price {
     font-weight: 700;
-}
+} */
 
 .cart-info a p {
     color: #252525;
-    font-family: "montserratlight";
     font-size: 12px;
     font-weight: 700;
     line-height: 20px;
@@ -316,7 +338,6 @@ div.header-main-right div .mini-cart-content .cart-img-details .cart-img-contaen
 
 .single-footer>h4 {
     color: white;
-    font-family: "montserratregular";
     font-size: 13px;
     margin-bottom: 19px 0 0 28px;
     text-transform: uppercase;
@@ -516,7 +537,12 @@ ul.s-f-widget {
 
 .product .product-details .product-title {
     margin-right: 20px;
-    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+    margin-bottom: 10px;
+    font-size: 120%;
+}
+
+.product .product-details .product-title a {
+    text-decoration: none;
 }
 
 .product .product-details .product-description {
@@ -533,7 +559,6 @@ ul.s-f-widget {
     padding: 4px 8px;
     background-color: #c66;
     color: #fff;
-    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
     font-size: 12px;
     border-radius: 3px;
 }
@@ -563,10 +588,6 @@ ul.s-f-widget {
     float: right;
     width: 21%;
     text-align: right;
-}
-
-.totals .totals-item-total {
-    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
 }
 
 .checkout {
@@ -665,9 +686,7 @@ ul.s-f-widget {
 }
 
 .products-gallery .products-gallery-title h2 {
-    font-family: "Roboto";
     font-weight: 700;
-    font-family: Futura, Futura-Medium, "Futura Medium", "Century Gothic", CenturyGothic, "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", sans-serif;
     font-size: 32px;
     margin: 0 0 10px 0;
 }
@@ -708,7 +727,6 @@ ul.s-f-widget {
 }
 
 .product-gallery-name {
-    font-family: "Roboto", sans-serif;
     font-weight: 600;
     width: 100%;
     text-transform: uppercase;
@@ -773,7 +791,6 @@ ul.s-f-widget {
     border-radius: 3px;
     font-weight: 200;
     margin: auto;
-    font-family: "Roboto", sans-serif;
     color: #afafaf;
 }
 
@@ -856,7 +873,6 @@ ul.s-f-widget {
 .header-size .sizes label {
     transition: all 0.3s ease-in-out;
     border-radius: 50%;
-    font-family: "montserratbold", sans-serif;
     border: 1px solid #086fcf;
     color: #086fcf;
     cursor: pointer;

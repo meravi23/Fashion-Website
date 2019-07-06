@@ -13,6 +13,28 @@ app.factory("productSrv", function($q) {
         this.colors = parseProduct.get("colors");
     }
 
+
+    function getAllProducts() {
+        var async = $q.defer();
+
+        var products = [];
+        const ProductParse = Parse.Object.extend('Product');
+        const query = new Parse.Query(ProductParse);
+
+        query.find().then((results) => {
+            console.log('Product found', results);
+            for (let index = 0; index < results.length; index++) {
+                products.push(new Product(results[index]));
+            }
+            async.resolve(products);
+        }, (error) => {
+            console.error('Error while fetching Product', error);
+            async.reject(error);
+        });
+
+        return async.promise;
+    }
+
     function getProductbyCategoryID(categoryID) {
         var async = $q.defer();
 
@@ -87,6 +109,7 @@ app.factory("productSrv", function($q) {
 
 
     return {
+        getAllProducts: getAllProducts,
         getProductbyCategoryID: getProductbyCategoryID,
         getProductbyID: getProductbyID,
         addProduct: addProduct

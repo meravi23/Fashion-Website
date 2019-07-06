@@ -19,10 +19,10 @@
         <div class="row ">
             <div class="col-md-8">
                 <uib-accordion close-others="oneAtATime">
-                    <div uib-accordion-group class="mt-1" heading="Login" template-url="group-template.html">
+                    <div uib-accordion-group class="mt-1" heading="Login" template-url="group-template.html" ng-show="">
                         <div class="panel-body">
                             <h6>RETURNING CUSTOMER</h6>
-                            <div class="alert alert-danger" role="alert" ng-show="invalidLogin">
+                            <div class="alert alert-danger" role="alert" ng-hide="checkActiveUser()">
                                 <strong>Invalid Login!</strong> incorrect email or password
                             </div>
                             <form>
@@ -245,7 +245,7 @@
                             <label for="cashdelivery"><input type="radio" id="cashdelivery" name="optionsRadios"> Cash on Delivery </label>
                             <label for="paypal"><input type="radio" id="paypal" name="optionsRadios" checked> Via Paypal </label>
                             <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">
-                            <input type="submit" value="Place Order" class="aa-browse-btn">
+                            <button clas="btn btn-primary aa-browse-btn" ng-click="placeOrder()">Place Order</button>
                         </div>
                     </div>
                 </uib-accordion>

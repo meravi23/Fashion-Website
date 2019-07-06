@@ -1,32 +1,10 @@
-app.controller("productsCtrl", function($scope, $location, productSrv, $log, $routeParams, $uibModal, $rootScope) {
+app.controller("productsAllCtrl", function($scope, $location, productSrv, $log, $routeParams, $uibModal, $rootScope) {
 
     $scope.products = [];
-    $scope.categoryGender = {
-        "men": "1",
-        "women": "2"
-    };
 
-    $scope.categoryType = {
-        "outfits": "1",
-        "t-shirts": "2",
-        "jackets": "3",
-        "jeans": "4",
-        "shirts": "5",
-        "accessories": "6",
-        "watch": "7",
-        "sunglass": "8",
-        "cap": "9",
-        "perfumes": "10"
-    }
+    $scope.categoryName = "All Products";
 
-
-    $scope.categoryName = $routeParams.category1.toUpperCase() + "'S " + $routeParams.category2.toUpperCase();
-
-    $scope.categoryId = $scope.categoryGender[$routeParams.category1] +
-        $scope.categoryType[$routeParams.category2];
-    $rootScope.categoryId = $scope.categoryId;
-
-    productSrv.getProductbyCategoryID($scope.categoryId).then(function(products) {
+    productSrv.getAllProducts().then(function(products) {
         $scope.products = products;
     }, function(err) {
         console.error(err);
@@ -52,10 +30,12 @@ app.controller("productsCtrl", function($scope, $location, productSrv, $log, $ro
             console.log("User canceled new product");
         });
     }
-
+    $scope.query = " ";
+    $scope.query = $rootScope.query;
+    $rootScope.query = " ";
     $scope.filterProduct = function(product) {
         // converting to lower case to do a case insensitive comparison
-        if (product.name.toLowerCase().includes($rootScope.query.toLowerCase())) {
+        if (product.name.toLowerCase().includes($scope.query.toLowerCase())) {
             return true;
         } else {
             return false;

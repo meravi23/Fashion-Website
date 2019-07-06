@@ -1,7 +1,6 @@
 app.controller("shoppingCartCtrl", function($scope, $location, userSrv, productSrv, shoppingCartSrv, $log) {
 
     $scope.shoppingCarts = [];
-    $shoppingCartIsEmpty = false;
     $scope.subtotal = 0;
     $scope.shippingRate = 15;
     $scope.subtotalTemp = 0;
@@ -52,6 +51,10 @@ app.controller("shoppingCartCtrl", function($scope, $location, userSrv, productS
 
     $scope.checkout = function() {
         $location.path("/checkout");
+    }
+
+    $scope.continueShopping = function() {
+        $location.path("/");
     }
 
 })
