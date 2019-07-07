@@ -18,10 +18,10 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
         return userSrv.isLoggedIn();
     }
 
-    $scope.$on("addProduct", function() {
-        $scope.getShoppingCart();
-        $scope.recalculateCart();
-    });
+    // $scope.$on("addProduct", function() {
+    //     $scope.getShoppingCart();
+    //     $scope.recalculateCart();
+    // });
 
     $scope.calcProductCount = function() {
         $scope.productCount = 0;

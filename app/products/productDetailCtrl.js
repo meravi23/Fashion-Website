@@ -30,15 +30,13 @@ app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, 
                 // mini - cart - content {
                 //         opacity: 1;
                 //         z - index: 9999999;
-
-
                 console.log(shoppingCart);
             },
             function(err) {
                 $log.error(err);
             });
 
-        $scope.$emit("addProduct");
+        // $scope.$emit("addProduct");
     }
 
     $scope.setSizeOfProduct = function(size) {
