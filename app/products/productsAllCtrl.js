@@ -1,4 +1,4 @@
-app.controller("productsAllCtrl", function($scope, $location, userSrv, productSrv, $log, $routeParams, $uibModal, $rootScope) {
+app.controller("productsAllCtrl", function($scope, $location, userSrv, productSrv, $log, $routeParams, $uibModal) {
 
     $scope.products = [];
     $scope.userAdminSw = false;
@@ -37,12 +37,15 @@ app.controller("productsAllCtrl", function($scope, $location, userSrv, productSr
         });
     }
 
-    $scope.query = " ";
-    $scope.query = $rootScope.query;
-    $rootScope.query = " ";
+
     $scope.filterProduct = function(product) {
+        var query = "";
+        if ($location.search().q) {
+            query = $location.search().q;
+        }
+
         // converting to lower case to do a case insensitive comparison
-        if (product.name.toLowerCase().includes($scope.query.toLowerCase())) {
+        if (product.name.toLowerCase().includes(query.toLowerCase())) {
             return true;
         } else {
             return false;

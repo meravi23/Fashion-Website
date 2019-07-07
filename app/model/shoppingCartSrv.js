@@ -37,6 +37,9 @@ app.factory("shoppingCartSrv", function($q, productSrv, userSrv) {
                     shoppingCarts[i].productDesc = results[i].desc;
                 }
                 async.resolve(shoppingCarts);
+            }, (error) => {
+                console.error('Error while fetching ShoppingCart', error);
+                async.reject(error);
             });
 
         }, (error) => {

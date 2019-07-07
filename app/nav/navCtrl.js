@@ -1,7 +1,7 @@
-app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $location, $rootScope) {
+app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $location) {
 
     $scope.user = userSrv.getActiveUser();
-
+    $scope.query = "";
     if ($scope.user) {
         userSrv.getCurrentUser().then(function(current_user) {
             $scope.user = current_user;
@@ -11,7 +11,6 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
     $scope.productCount = 0;
 
     $scope.filterProduct = function(query) {
-        $rootScope.query = query;
         $location.path("/products").search({ q: query });
     }
 
