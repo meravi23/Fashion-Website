@@ -27,11 +27,18 @@ app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, 
         shoppingCart.productSize = $scope.productSizeTmp.toString();
         shoppingCart.productColor = $scope.productColorTmp;
         shoppingCartSrv.addProducToShoppingCart(shoppingCart).then(function(shoppingCart) {
+                // mini - cart - content {
+                //         opacity: 1;
+                //         z - index: 9999999;
+
+
                 console.log(shoppingCart);
             },
             function(err) {
                 $log.error(err);
             });
+
+        $scope.$emit("addProduct");
     }
 
     $scope.setSizeOfProduct = function(size) {
@@ -48,6 +55,7 @@ app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, 
         }, function(err) {
             $log.error(err);
         });
-
     }
+
+
 });

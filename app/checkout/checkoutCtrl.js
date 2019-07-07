@@ -1,4 +1,4 @@
-app.controller("checkoutCtrl", function($scope, $log, $location, userSrv) {
+app.controller("checkoutCtrl", function($scope, $log, $location, userSrv, shoppingCartSrv) {
 
     $scope.oneAtATime = true;
 
@@ -17,7 +17,29 @@ app.controller("checkoutCtrl", function($scope, $log, $location, userSrv) {
         }, function(err) {
             return false;
         });
-
     }
+
+    $scope.getShoppingCart = function() {
+        shoppingCartSrv.getShoppingCartPerUserID().then(function(shoppingCarts) {
+            for (var i = 0; i < shoppingCarts.length; i++) {
+                $scope.subtotal += shoppingCarts[i].productPrice * shoppingCarts[i].productQuantity;
+            }
+            $scope.productCount = $scope.calcProductCount();
+            $scope.shoppingCarts = shoppingCarts;
+        }, function(err) {
+            console.error(err);
+        });
+    }
+
+    $scope.calcProductCount = function() {
+        $scope.productCount = 0;
+        if ($scope.shoppingCarts) {
+            for (var i = 0; i < $scope.shoppingCarts.length; i++) {
+                $scope.productCount += $scope.shoppingCarts[i].productQuantity;
+            }
+        }
+        return $scope.productCount;
+    }
+
 
 })

@@ -16,7 +16,7 @@
         </div>
     </script>
     <div class="checkout-area">
-        <div class="row ">
+        <div class="row">
             <div class="col-md-8">
                 <uib-accordion close-others="oneAtATime">
                     <div uib-accordion-group class="mt-1" heading="Login" template-url="group-template.html" ng-show="">
@@ -138,10 +138,8 @@
                     </div>
                     <div uib-accordion-group class="mt-1" heading="Shipping Address" template-url="group-template.html">
                         <div class="form-group row">
-                            <label for="shippingAddress" class="col-sm-2 col-form-label">Same as my shipping address</label>
-                            <div class="col-sm-10">
-                                <input type="checkbox" class="form-control" id="shippingAddress" ng-model="shippingAddress">
-                            </div>
+                            <label for="shippingAddress"><input type="checkbox" id="shippingAddress" ng-model="shippingAddress"
+                                 name="shippingAddress" > Same as my shipping address</label>
                         </div>
                         <div ng-hide="shippingAddress" class="panel-body">
                             <div class="row">
@@ -251,37 +249,28 @@
                 </uib-accordion>
             </div>
             <div class="col-md-4">
+                <h4>Order Summary</h4>
                 <div class="checkout-right">
-                    <h4>Order Summary</h4>
-                    <div class="aa-order-summary-area">
-                        <table class="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>T-Shirt <strong> x  1</strong></td>
-                                    <td>$150</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Subtotal</th>
-                                    <td>$750</td>
-                                </tr>
-                                <tr>
-                                    <th>Tax</th>
-                                    <td>$35</td>
-                                </tr>
-                                <tr>
-                                    <th>Total</th>
-                                    <td>$785</td>
-                                </tr>
-                            </tfoot>
-                        </table>
+                    <div class="aa-order-summary-area" data-ng-init="getShoppingCart()">
+                        <div class="cart-image" ng-repeat="shoppingCart in shoppingCarts">
+                            <div class="row">
+                                <div class="col-md-4 shoppingCart-summary-left">
+                                    <a href="#!/products/{{shoppingCart.productID.id}}"><img class="cart-image-small-checkout img-fluid" ng-src="{{shoppingCart.productImage}}" alt=""></a>
+                                </div>
+                                <div class="col-md-8 shoppingCart-summary-right">
+                                    <div class="cart-info-checkout">
+                                        <a href="#!/products/{{shoppingCart.productID.id}}">{{shoppingCart.productName}} </a>
+                                        <p class="cart-size"><span class="bold">Size:</span>{{shoppingCart.productSize}}</p>
+                                        <p class="cart-color"><span class="bold">Color:</span>
+                                            <span class="color-circle" ng-style="{ 'background-color': '{{shoppingCart.productColor}}'}"></span>
+                                        </p>
+                                        <p class="cart-price"> <span class="bold">Price: </span>${{shoppingCart.productPrice | number:2}} </p>
+                                        <p class="cart-quantity"><span class="bold">Qty:</span> {{shoppingCart.productQuantity}}</p>
+                                        <p class="cart-subtotal"><span class="bold">Subtotal: </span> ${{shoppingCart.productQuantity * shoppingCart.productPrice | number:2}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

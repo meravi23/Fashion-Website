@@ -96,7 +96,6 @@ body {
 
 .dropdown-menu {
     width: 300px;
-    ;
 }
 
 .cart-image-small {
@@ -284,7 +283,7 @@ div.header-main-right div .mini-cart-content .cart-img-details .cart-img-contaen
     margin-bottom: 20px;
 }
 
-.login-reister-area {
+.login-register-area {
     width: 100%;
     margin: auto;
     margin-top: 40px;
@@ -305,7 +304,7 @@ div.header-main-right div .mini-cart-content .cart-img-details .cart-img-contaen
     margin: auto;
 }
 
-.login-reister-area h2 {
+.login-register-area h2 {
     color: #00174F;
     text-transform: uppercase;
     font-size: 18px;
@@ -314,7 +313,7 @@ div.header-main-right div .mini-cart-content .cart-img-details .cart-img-contaen
     letter-spacing: 1.5px;
 }
 
-.login-reister-area label {
+.login-register-area label {
     margin: 0;
 }
 
@@ -941,6 +940,10 @@ ul.s-f-widget {
  CHECKOUT PAGE
 ====================*/
 
+.checkout-right {
+    border: 1px solid #ccc;
+}
+
 #checkout .card-header a {
     text-decoration: none;
 }
@@ -958,34 +961,6 @@ ul.s-f-widget {
 
 .aa-order-summary-area {
     margin-bottom: 30px;
-}
-
-.checkout-area .aa-order-summary-area .table {
-    border: 1px solid #ccc;
-}
-
-.checkout-area .aa-order-summary-area .table thead tr th {
-    border: 1px solid #ccc;
-    text-align: center;
-}
-
-.checkout-area .aa-order-summary-area .table tbody tr td {
-    border-right: 1px solid #ccc;
-    text-align: center;
-}
-
-.checkout-area .aa-order-summary-area .table tbody tr td strong {
-    margin-left: 5px;
-    font-size: 14px;
-}
-
-.checkout-area .aa-order-summary-area .table tfoot tr th {
-    border-right: 1px solid #ccc;
-    text-align: center;
-}
-
-.checkout-area .aa-order-summary-area .table tfoot tr td {
-    text-align: center;
 }
 
 .checkout-area .aa-payment-method {
