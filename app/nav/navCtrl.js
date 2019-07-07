@@ -47,15 +47,15 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
         });
     }
 
-    $scope.recalculateCart = function() {
-        $scope.totalTemp = 0;
-        if ($scope.shoppingCarts && $scope.shoppingCarts.length > 0) {
-            for (var i = 0; i < $scope.shoppingCarts.length; i++) {
-                $scope.totalTemp += $scope.shoppingCarts[i].productPrice * $scope.shoppingCarts[i].productQuantity;
-            }
-        }
-        return $scope.totalTemp;
-    }
+    // $scope.recalculateCart = function() {
+    //     $scope.totalTemp = 0;
+    //     if ($scope.shoppingCarts && $scope.shoppingCarts.length > 0) {
+    //         for (var i = 0; i < $scope.shoppingCarts.length; i++) {
+    //             $scope.totalTemp += $scope.shoppingCarts[i].productPrice * $scope.shoppingCarts[i].productQuantity;
+    //         }
+    //     }
+    //     return $scope.totalTemp;
+    // }
 
     $scope.checkout = function() {
         $location.path("/checkout");
