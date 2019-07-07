@@ -43,8 +43,8 @@ app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, 
     }
 
     $scope.deleteProduct = function(product) {
-        productSrv.deleteProduct($product).then(function(product) {
-            $scope.product = product;
+        productSrv.deleteProduct(product).then(function(res) {
+            $location.path("/products");
         }, function(err) {
             $log.error(err);
         });

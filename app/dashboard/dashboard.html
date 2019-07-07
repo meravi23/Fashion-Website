@@ -1,0 +1,12 @@
+<div>
+
+    <div class="new-users-chart">
+        <p><i class="fa fa-user"></i> + New Users: {{newUsers}}</p>
+    </div>
+
+    <div class="my-pie" ng-if="cars">
+        <canvas id="pie" class="chart chart-pie" chart-data="getChartData()" chart-labels="labels" chart-options="options">
+            </canvas>
+    </div>
+
+</div>

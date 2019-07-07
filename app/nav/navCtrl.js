@@ -12,7 +12,7 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
 
     $scope.filterProduct = function(query) {
         $rootScope.query = query;
-        $location.path("/products");
+        $location.path("/products").search({ q: query });
     }
 
     $scope.isLoggedIn = function() {

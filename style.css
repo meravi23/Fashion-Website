@@ -16,10 +16,27 @@ body {
 /***************************************/
 
 
+/*     Dashboard                       */
+
+
+/***************************************/
+
+.new-users-chart {
+    border: 1px solid black;
+}
+
+
+/***************************************/
+
+
 /*                Navbar                */
 
 
 /***************************************/
+
+.navbar-second-row {
+    margin: auto;
+}
 
 .about-img {
     width: 100%;
@@ -186,7 +203,7 @@ div.header-main-right:hover .mini-cart-content {
     overflow: auto;
     padding: 12px 12px 10px;
     position: relative;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .color-circle {

@@ -1,5 +1,4 @@
 <div>
-    <app-navbar></app-navbar>
     <div class="products-gallery container">
         <div class="handleproducts" ng-show="userAdminSw">
             <button class="btn btn-info add-product" ng-click="openNewProductModal()">Add Product</button>
@@ -12,7 +11,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-12" ng-repeat="product in products | filter: filterProduct">
-                    <div class="card product-gallery-card h-100">
+                    <div class="card product-gallery-card">
                         <div class="product-gallery-detail card-img-top" ng-click="openProductDetails(product.id)">
                             <img ng-src={{product.image}} alt="">
                         </div>
@@ -29,5 +28,4 @@
                 </div>
             </div>
         </div>
-        <app-footer></app-footer>
     </div>

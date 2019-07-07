@@ -111,6 +111,21 @@ app.factory("productSrv", function($q) {
     function deleteProduct(product) {
         var async = $q.defer();
 
+        const ProductParse = Parse.Object.extend('Product');
+        const query = new Parse.Query(ProductParse);
+
+        query.get(product.id).then((object) => {
+            object.destroy().then((response) => {
+                console.log('Deleted Product', response);
+                async.resolve(response);
+            }, (error) => {
+                console.error('Error while deleting Product', error);
+                async.reject(error);
+            });
+        });
+
+        return async.promise;
+
     }
 
     return {
