@@ -688,7 +688,7 @@ ul.s-f-widget {
 
 .products-gallery {
     min-height: 700px;
-    height: 100vh;
+    /* height: 100vh; */
     background-image: url'(https: //bit.ly/2lpu3Uh)';
     background-blend-mode: multiply;
 }
