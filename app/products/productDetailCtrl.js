@@ -1,4 +1,4 @@
-app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, $routeParams, shoppingCartSrv, $location) {
+app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, $routeParams, shoppingCartSrv, $location, $rootScope) {
 
     $scope.product = {};
     $scope.id = $routeParams.id;
@@ -27,16 +27,13 @@ app.controller("productDetailCtrl", function($scope, $log, userSrv, productSrv, 
         shoppingCart.productSize = $scope.productSizeTmp.toString();
         shoppingCart.productColor = $scope.productColorTmp;
         shoppingCartSrv.addProducToShoppingCart(shoppingCart).then(function(shoppingCart) {
-                // mini - cart - content {
-                //         opacity: 1;
-                //         z - index: 9999999;
                 console.log(shoppingCart);
             },
             function(err) {
                 $log.error(err);
             });
 
-        // $scope.$emit("addProduct");
+        $rootScope.$broadcast('addProduct');
     }
 
     $scope.setSizeOfProduct = function(size) {

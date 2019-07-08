@@ -1,20 +1,23 @@
-<div class="container">
-    <div class="lostPasswordPage" ng-hide="submitForgotPsw">
-        <h1 class="myAccountTitle">MY ACCOUNT</h1>
-        <h2 class="myAccountSubTitle">LOST PASSWORD</h2>
-        <div class="lostPswForm">
-            <p>Don't worry, just enter your email address below and we'll send you password reset instructions.</p>
-        </div>
-        <form>
-            <div class="form-group">
-                <label for="email">Enter email</label>
-                <input type="email" class="form-control" id="email">
+<div>
+    <app-navbar></app-navbar>
+    <div class="container">
+        <div class="lostPasswordPage" ng-hide="submitForgotPsw">
+            <h1 class="myAccountTitle">MY ACCOUNT</h1>
+            <h2 class="myAccountSubTitle">LOST PASSWORD</h2>
+            <div class="lostPswForm">
+                <p>Don't worry, just enter your email address below and we'll send you password reset instructions.</p>
             </div>
-            <button ng-click="submitForgotPsw=true" class="btn btn-success ">Submit</button>
-        </form>
-    </div>
-    <div class="container" ng-show="submitForgotPsw">
-        <h1 class="text-center mt-30 mb-70">THANK YOU.</h1>
-        <p class="text-center mb-200"> If an account for this e-mail address exists, you will receive instructions on how to reset your password.</p>
+            <form>
+                <div class="form-group">
+                    <label for="email">Enter email</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <button ng-click="submitForgotPsw=true" class="btn btn-success ">Submit</button>
+            </form>
+        </div>
+        <div class="container" ng-show="submitForgotPsw">
+            <h1 class="text-center mt-30 mb-70">THANK YOU.</h1>
+            <p class="text-center mb-200"> If an account for this e-mail address exists, you will receive instructions on how to reset your password.</p>
+        </div>
     </div>
 </div>

@@ -27,7 +27,7 @@
                                 <a href="#!/shoppingCart" class="cart" data-ng-init="getShoppingCart()">
                                     <i class="fas fa-lg fa-shopping-cart"> </i></a>
                                 <span class="shopping-cart-counter" ng-show="calcProductCount() > 0">{{calcProductCount()}}</span>
-                                <div class="mini-cart-content" ng-show="shoppingCarts.length > 0">
+                                <div class="mini-cart-content" id="mini-cart-content-id" ng-show="shoppingCarts.length > 0">
                                     <div class="row">
                                         <div class="mini-top-sec">
                                             <div class="cart-image" ng-repeat="shoppingCart in shoppingCarts">

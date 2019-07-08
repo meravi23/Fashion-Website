@@ -18,10 +18,12 @@ app.controller("navCtrl", function($scope, userSrv, $log, shoppingCartSrv, $loca
         return userSrv.isLoggedIn();
     }
 
-    // $scope.$on("addProduct", function() {
-    //     $scope.getShoppingCart();
-    //     $scope.recalculateCart();
-    // });
+    $scope.$on("addProduct", function() {
+        $scope.getShoppingCart();
+        $scope.recalculateCart();
+        //     document.getElementById("mini-cart-content-id").style.opacity = "1";
+        //     document.getElementById("mini-cart-content-id").style.zIndex = "9999999";
+    });
 
     $scope.calcProductCount = function() {
         $scope.productCount = 0;
